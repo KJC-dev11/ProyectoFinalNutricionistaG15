@@ -10,8 +10,10 @@ package Modelo;
  */
 public class Paciente {
     private int idPaciente;
-    private String nombreCompleto;
+    private String apellido;
+    private String nombre;
     private int edad;
+    private int dni;
     private double altura;
     private double pesoActual;
     private double pesoBuscado;
@@ -19,18 +21,22 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(int idPaciente, String nombreCompleto, int edad, double altura, double pesoActual, double pesoBuscado) {
-        this.idPaciente = idPaciente;
-        this.nombreCompleto = nombreCompleto;
+    public Paciente(String apellido, String nombre, int edad, int dni, double altura, double pesoActual, double pesoBuscado) {
+        this.apellido = apellido;
+        this.nombre = nombre;
         this.edad = edad;
+        this.dni = dni;
         this.altura = altura;
         this.pesoActual = pesoActual;
         this.pesoBuscado = pesoBuscado;
     }
 
-    public Paciente(String nombreCompleto, int edad, double altura, double pesoActual, double pesoBuscado) {
-        this.nombreCompleto = nombreCompleto;
+    public Paciente(int idPaciente, String apellido, String nombre, int edad, int dni, double altura, double pesoActual, double pesoBuscado) {
+        this.idPaciente = idPaciente;
+        this.apellido = apellido;
+        this.nombre = nombre;
         this.edad = edad;
+        this.dni = dni;
         this.altura = altura;
         this.pesoActual = pesoActual;
         this.pesoBuscado = pesoBuscado;
@@ -44,12 +50,20 @@ public class Paciente {
         this.idPaciente = idPaciente;
     }
 
-    public String getNombreCompleto() {
-        return nombreCompleto;
+    public String getApellido() {
+        return apellido;
     }
 
-    public void setNombreCompleto(String nombreCompleto) {
-        this.nombreCompleto = nombreCompleto;
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public int getEdad() {
@@ -58,6 +72,14 @@ public class Paciente {
 
     public void setEdad(int edad) {
         this.edad = edad;
+    }
+
+    public int getDni() {
+        return dni;
+    }
+
+    public void setDni(int dni) {
+        this.dni = dni;
     }
 
     public double getAltura() {
@@ -84,6 +106,16 @@ public class Paciente {
         this.pesoBuscado = pesoBuscado;
     }
     
+    public boolean estaCercaDelPesoBuscado(){
+        return Math.abs(pesoActual - pesoBuscado) <= 2;
+    }
+
+    @Override
+    public String toString() {
+        return "Paciente{" + "idPaciente=" + idPaciente + ", apellido=" + apellido + ", nombre=" + nombre + ", edad=" + edad + ", dni=" + dni + ", altura=" + altura + ", pesoActual=" + pesoActual + ", pesoBuscado=" + pesoBuscado + '}';
+    }
     
     
 }
+
+

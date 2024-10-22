@@ -16,8 +16,8 @@ import javax.swing.JOptionPane;
 public class Conexion {
     private static final String URL = "jdbc:mysql://localhost/";
     private static final String DB="nutricionistadb";
-    private static final String USUARIO = "root";
-    private static final String PASSWORD = "";
+    private static final String USUARIO ="root";
+    private static final String PASSWORD ="";
     
     private static Connection conexion;
     
@@ -25,7 +25,7 @@ public class Conexion {
         
     }
     
-     public static Connection getConexion() {
+    public static Connection getConexion() {
         if (conexion == null) {
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,5 +39,4 @@ public class Conexion {
         }
         return conexion;
     }
-    
 }
