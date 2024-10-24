@@ -4,6 +4,8 @@
  */
 package Modelo;
 
+import java.util.List;
+
 /**
  *
  * @author MOON
@@ -14,6 +16,8 @@ public class MenuDiario {
     private int caloriasDelMenu;
     private String estado;
     private int codDieta;
+    
+    private List<RenglonMenu> renglones;
 
     public MenuDiario() {
     }
