@@ -29,12 +29,11 @@ public class JFrameNutricionista extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAlimentos = new javax.swing.JMenu();
-        jAltaAlimento = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItemAltaAlimento = new javax.swing.JMenuItem();
         JmenuPacientes = new javax.swing.JMenu();
-        jAltaPaciente = new javax.swing.JMenu();
+        jMenuItemAltaPaciente = new javax.swing.JMenuItem();
         jMenuDietas = new javax.swing.JMenu();
-        jAltaDieta = new javax.swing.JMenu();
+        jMenuItemAltaDieta = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,40 +55,37 @@ public class JFrameNutricionista extends javax.swing.JFrame {
             }
         });
 
-        jAltaAlimento.setText("Alta Alimento");
-        jAltaAlimento.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAltaAlimento.setText("Alta Alimento");
+        jMenuItemAltaAlimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAltaAlimentoActionPerformed(evt);
+                jMenuItemAltaAlimentoActionPerformed(evt);
             }
         });
-        jMenuAlimentos.add(jAltaAlimento);
-
-        jMenuItem1.setText("jMenuItem1");
-        jMenuAlimentos.add(jMenuItem1);
+        jMenuAlimentos.add(jMenuItemAltaAlimento);
 
         jMenuBar1.add(jMenuAlimentos);
 
         JmenuPacientes.setText("Pacientes");
 
-        jAltaPaciente.setText("Alta Paciente");
-        jAltaPaciente.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAltaPaciente.setText("Alta Paciente");
+        jMenuItemAltaPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAltaPacienteActionPerformed(evt);
+                jMenuItemAltaPacienteActionPerformed(evt);
             }
         });
-        JmenuPacientes.add(jAltaPaciente);
+        JmenuPacientes.add(jMenuItemAltaPaciente);
 
         jMenuBar1.add(JmenuPacientes);
 
         jMenuDietas.setText("Dietas");
 
-        jAltaDieta.setText("Alta Dieta");
-        jAltaDieta.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemAltaDieta.setText("Alta Dieta");
+        jMenuItemAltaDieta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAltaDietaActionPerformed(evt);
+                jMenuItemAltaDietaActionPerformed(evt);
             }
         });
-        jMenuDietas.add(jAltaDieta);
+        jMenuDietas.add(jMenuItemAltaDieta);
 
         jMenuBar1.add(jMenuDietas);
 
@@ -111,21 +107,21 @@ public class JFrameNutricionista extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jAltaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAltaPacienteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jAltaPacienteActionPerformed
-
     private void jMenuAlimentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlimentosActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuAlimentosActionPerformed
 
-    private void jAltaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAltaAlimentoActionPerformed
+    private void jMenuItemAltaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaAlimentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jAltaAlimentoActionPerformed
+    }//GEN-LAST:event_jMenuItemAltaAlimentoActionPerformed
 
-    private void jAltaDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAltaDietaActionPerformed
+    private void jMenuItemAltaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaPacienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jAltaDietaActionPerformed
+    }//GEN-LAST:event_jMenuItemAltaPacienteActionPerformed
+
+    private void jMenuItemAltaDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaDietaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemAltaDietaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,13 +161,12 @@ public class JFrameNutricionista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JmenuPacientes;
-    private javax.swing.JMenu jAltaAlimento;
-    private javax.swing.JMenu jAltaDieta;
-    private javax.swing.JMenu jAltaPaciente;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenuAlimentos;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuDietas;
-    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItemAltaAlimento;
+    private javax.swing.JMenuItem jMenuItemAltaDieta;
+    private javax.swing.JMenuItem jMenuItemAltaPaciente;
     // End of variables declaration//GEN-END:variables
 }

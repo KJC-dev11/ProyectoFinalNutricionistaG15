@@ -12,18 +12,13 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuAlimentosActionPerformed"/>
           </Events>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jAltaAlimento">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAltaAlimento">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alta Alimento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAltaAlimentoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAltaAlimentoActionPerformed"/>
               </Events>
-            </Menu>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="jMenuItem1"/>
-              </Properties>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -32,14 +27,14 @@
             <Property name="text" type="java.lang.String" value="Pacientes"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jAltaPaciente">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAltaPaciente">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alta Paciente"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAltaPacienteActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAltaPacienteActionPerformed"/>
               </Events>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenuDietas">
@@ -47,14 +42,14 @@
             <Property name="text" type="java.lang.String" value="Dietas"/>
           </Properties>
           <SubComponents>
-            <Menu class="javax.swing.JMenu" name="jAltaDieta">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAltaDieta">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Alta Dieta"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jAltaDietaActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAltaDietaActionPerformed"/>
               </Events>
-            </Menu>
+            </MenuItem>
           </SubComponents>
         </Menu>
       </SubComponents>
