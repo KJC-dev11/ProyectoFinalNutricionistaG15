@@ -4,17 +4,35 @@
  */
 package Vista;
 
+import Modelo.Dieta;
+import Modelo.Paciente;
+import Persistencia.DietaData;
+import Persistencia.PacienteData;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 /**
  *
  * @author MOON
  */
 public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
+    
+        private DietaData dietaData;
+    private PacienteData pacienteData;
+    private DefaultTableModel tableModel;
 
     /**
      * Creates new form NewJInternalFrameAltaDieta
      */
     public NewJInternalFrameAltaDieta() {
         initComponents();
+        dietaData = new DietaData();
+        pacienteData = new PacienteData();
+        tableModel = (DefaultTableModel) jTableDatos.getModel();
+        cargarPacientes();
+        cargarDietas();
     }
 
     /**
@@ -37,12 +55,12 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jBnuevo = new javax.swing.JButton();
+        jBguardar = new javax.swing.JButton();
+        jBborrar = new javax.swing.JButton();
+        jBactualizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableDatos = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -86,26 +104,46 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
             }
         });
 
-        jButton1.setText("jButton1");
+        jBnuevo.setText("Nuevo");
+        jBnuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBnuevoActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("jButton2");
+        jBguardar.setText("Guardar");
+        jBguardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBguardarActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("jButton3");
+        jBborrar.setText("Borrar");
+        jBborrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBborrarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("jButton4");
+        jBactualizar.setText("Actualizar");
+        jBactualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBactualizarActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Nombre", "Peso Inicial", "Peso Final", "Calorias Totales"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTableDatos);
 
         jLabel6.setText("Fecha de inicio");
 
@@ -114,6 +152,18 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
         jLabel8.setText("Paciente");
 
         jLabel9.setText("Estado");
+
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
+        jRBActivoOBAJA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBActivoOBAJAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -126,18 +176,14 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(51, 51, 51)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton4))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 504, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(23, 23, 23))
+                        .addComponent(jBnuevo)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBguardar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBborrar)
+                        .addGap(18, 18, 18)
+                        .addComponent(jBactualizar)
+                        .addGap(124, 124, 124))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -166,8 +212,9 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jRBActivoOBAJA))))
-                        .addGap(35, 35, 35))
+                                    .addComponent(jRBActivoOBAJA)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(289, 289, 289))))
@@ -219,10 +266,10 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jBnuevo)
+                    .addComponent(jBguardar)
+                    .addComponent(jBborrar)
+                    .addComponent(jBactualizar))
                 .addContainerGap())
         );
 
@@ -237,12 +284,36 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jRBActivoOBAJAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBActivoOBAJAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBActivoOBAJAActionPerformed
+
+    private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBnuevoActionPerformed
+
+    private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBguardarActionPerformed
+
+    private void jBborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBborrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBborrarActionPerformed
+
+    private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBactualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jBactualizar;
+    private javax.swing.JButton jBborrar;
+    private javax.swing.JButton jBguardar;
+    private javax.swing.JButton jBnuevo;
     private javax.swing.JComboBox<String> jComboBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDateChooser jDateChooser2;
@@ -259,10 +330,36 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRBActivoOBAJA;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableDatos;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarPacientes() {
+         List<Paciente> pacientes = pacienteData.obtenerPacientes();
+        for (Paciente p : pacientes) {
+            jComboBox1.addItem(p.getNombre());
+        }
+    }
+
+    private void cargarDietas() {
+        List<Dieta> dietas = dietaData.getAllDietas();
+        tableModel.setRowCount(0); // Limpiar tabla
+        for (Dieta d : dietas) {
+            tableModel.addRow(new Object[]{d.getId(), d.getNombre(), d.getPesoInicial(), d.getPesoFinal(), d.getCaloriasTotales()});
+        }
+    }
+    
+        private void limpiarCampos() {
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        jTextField4.setText("");
+        jDateChooser1.setDate(null);
+        jDateChooser2.setDate(null);
+        jComboBox1.setSelectedIndex(0);
+        jRBActivoOBAJA.setSelected(false);
+    }
 }

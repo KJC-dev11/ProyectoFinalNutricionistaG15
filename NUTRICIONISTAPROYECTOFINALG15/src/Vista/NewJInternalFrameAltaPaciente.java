@@ -25,10 +25,10 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
      * Creates new form NewJInternalFrameAltaPaciente
      */
     public NewJInternalFrameAltaPaciente() {
-       initComponents();
+        initComponents();
         pacienteData = new PacienteData();
         modelo = new DefaultTableModel();
-        listaPacientes = (ArrayList<Paciente>) pacienteData.listarPacientes();
+        listaPacientes = (ArrayList<Paciente>) pacienteData.obtenerTodosLosPacientes();
         configurarTabla();
         cargarPacientes();
     }
@@ -324,9 +324,15 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     private void cargarPacientes() {
-        modelo.setRowCount(0);  // Limpiar la tabla
+        modelo.setRowCount(0);
         for (Paciente paciente : listaPacientes) {
-            modelo.addRow(new Object[]{paciente.getIdPaciente(), paciente.getDni(), paciente.getApellido(), paciente.getNombre()});
+            modelo.addRow(new Object[]{
+                paciente.getIdPaciente(), 
+                paciente.getDni(), 
+                paciente.getApellido(), 
+                paciente.getNombre(), 
+                paciente.isActivo() ? "Activo" : "Inactivo"
+            });
         }
     }
     
@@ -342,58 +348,64 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
     }
         
             private void guardarPaciente() {
-        try {
-            String nombre = txtNombre.getText();
-            String apellido = txtApellido.getText();
-            int edad = Integer.parseInt(txtEdad.getText());
-            int dni = Integer.parseInt(txtDni.getText());
-            double altura = Double.parseDouble(txtAltura.getText());
-            double pesoActual = Double.parseDouble(txtPesoActual.getText());
-            double pesoBuscado = Double.parseDouble(txtPesoBuscado.getText());
+    try {
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        int dni = Integer.parseInt(txtDni.getText());
+        double altura = Double.parseDouble(txtAltura.getText());
+        double pesoActual = Double.parseDouble(txtPesoActual.getText());
+        double pesoBuscado = Double.parseDouble(txtPesoBuscado.getText());
+        boolean activo = jRBEstado.isSelected();
 
-            Paciente paciente = new Paciente(apellido, nombre, edad, dni, altura, pesoActual, pesoBuscado);
-            pacienteData.guardarPaciente(paciente);
-            cargarPacientes();
-            JOptionPane.showMessageDialog(this, "Paciente guardado exitosamente.");
-            limpiarCampos();
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error en los datos ingresados. Verifica los valores numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        Paciente paciente = new Paciente(edad, altura, pesoActual, pesoBuscado, dni, apellido, nombre, activo);
+        pacienteData.guardarPaciente(paciente);
+        listaPacientes.add(paciente);
+        cargarPacientes();
+        
+        JOptionPane.showMessageDialog(this, "Paciente guardado exitosamente.");
+        limpiarCampos();
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Error en los datos ingresados. Verifica los valores numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }
             
              private void actualizarPaciente() {
-    int fila = tblPacientes.getSelectedRow();
-        if (fila == -1) {
-            JOptionPane.showMessageDialog(this, "Seleccione un paciente para actualizar.");
-            return;
-        }
-        try {
-            int id = (int) modelo.getValueAt(fila, 0);
-            String nombre = txtNombre.getText();
-            String apellido = txtApellido.getText();
-            int edad = Integer.parseInt(txtEdad.getText());
-            int dni = Integer.parseInt(txtDni.getText());
-            double altura = Double.parseDouble(txtAltura.getText());
-            double pesoActual = Double.parseDouble(txtPesoActual.getText());
-            double pesoBuscado = Double.parseDouble(txtPesoBuscado.getText());
-
-            Paciente paciente = new Paciente(id, apellido, nombre, edad, dni, altura, pesoActual, pesoBuscado);
-            pacienteData.modificarPaciente(paciente);
-            cargarPacientes();
-            JOptionPane.showMessageDialog(this, "Paciente actualizado exitosamente.");
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Error en los datos ingresados. Verifica los valores numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+     int fila = tblPacientes.getSelectedRow();
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un paciente para actualizar.");
+        return;
+    }
+    try {
+        int id = (int) modelo.getValueAt(fila, 0);
+        String nombre = txtNombre.getText();
+        String apellido = txtApellido.getText();
+        int edad = Integer.parseInt(txtEdad.getText());
+        int dni = Integer.parseInt(txtDni.getText());
+        double altura = Double.parseDouble(txtAltura.getText());
+        double pesoActual = Double.parseDouble(txtPesoActual.getText());
+        double pesoBuscado = Double.parseDouble(txtPesoBuscado.getText());
+        boolean activo = jRBEstado.isSelected();
+        Paciente paciente = new Paciente(id, edad, altura, pesoActual, pesoBuscado, dni, apellido, nombre, activo);
+        pacienteData.actualizarPaciente(paciente);
+        listaPacientes.set(fila, paciente);
+        cargarPacientes();
+        
+        JOptionPane.showMessageDialog(this, "Paciente actualizado exitosamente.");
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Error en los datos ingresados. Verifica los valores numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }
              
               private void eliminarPaciente() {
- int fila = tblPacientes.getSelectedRow();
+  int fila = tblPacientes.getSelectedRow();
         if (fila == -1) {
             JOptionPane.showMessageDialog(this, "Seleccione un paciente para eliminar.");
             return;
         }
         int id = (int) modelo.getValueAt(fila, 0);
-        pacienteData.eliminarPaciente(id);
+        pacienteData.borrarPaciente(id);
+        listaPacientes.remove(fila); // Actualiza la lista
         cargarPacientes();
         JOptionPane.showMessageDialog(this, "Paciente eliminado correctamente.");
     }
@@ -403,6 +415,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
         modelo.addColumn("DNI");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
+        modelo.addColumn("Estado");
         tblPacientes.setModel(modelo);
     }
 }
