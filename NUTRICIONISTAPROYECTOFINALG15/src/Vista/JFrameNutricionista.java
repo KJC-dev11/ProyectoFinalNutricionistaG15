@@ -161,6 +161,9 @@ public class JFrameNutricionista extends javax.swing.JFrame {
 
     private void jMenuItemAltaAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaAlimentoActionPerformed
         // TODO add your handling code here:
+    NewJInternalFrameAltaAlimento vistComida = new NewJInternalFrameAltaAlimento();
+    escritorio.add(vistComida);
+    vistComida.setVisible(true);
     }//GEN-LAST:event_jMenuItemAltaAlimentoActionPerformed
 
     private void jMenuItemAltaPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAltaPacienteActionPerformed
