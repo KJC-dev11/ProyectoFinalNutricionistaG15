@@ -12,6 +12,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.List;
 /**
  *
@@ -80,6 +81,10 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 100, Short.MAX_VALUE)
         );
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel5.setText("DIETA");
@@ -294,18 +299,64 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
 
     private void jBnuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBnuevoActionPerformed
         // TODO add your handling code here:
+        limpiarCampos();
     }//GEN-LAST:event_jBnuevoActionPerformed
 
     private void jBguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBguardarActionPerformed
         // TODO add your handling code here:
+            String nombreDieta = jTextField1.getText();
+    float pesoInicial = Float.parseFloat(jTextField2.getText());
+    float pesoFinal = Float.parseFloat(jTextField3.getText());
+    int caloriasTotales = Integer.parseInt(jTextField4.getText());
+    Date fechaInicio = jDateChooser1.getDate();
+    Date fechaFin = jDateChooser2.getDate();
+    boolean estado = jRBActivoOBAJA.isSelected();
+    
+    Paciente pacienteSeleccionado = pacienteData.obtenerPacientes().get(jComboBox1.getSelectedIndex());
+
+    Dieta nuevaDieta = new Dieta(nombreDieta, null, fechaInicio, fechaFin, pesoInicial, pesoFinal, estado, caloriasTotales, pacienteSeleccionado, pacienteSeleccionado.getIdPaciente());
+
+    dietaData.guardarDieta(nuevaDieta);
+    cargarDietas();
+    limpiarCampos();
     }//GEN-LAST:event_jBguardarActionPerformed
 
     private void jBborrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBborrarActionPerformed
         // TODO add your handling code here:
+            int filaSeleccionada = jTableDatos.getSelectedRow();
+    if (filaSeleccionada != -1) {
+        int idDieta = (int) tableModel.getValueAt(filaSeleccionada, 0);
+        dietaData.eliminarDieta(idDieta);
+        cargarDietas();
+    } else {
+        JOptionPane.showMessageDialog(this, "Seleccione una dieta para borrar.");
+    }
     }//GEN-LAST:event_jBborrarActionPerformed
 
     private void jBactualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBactualizarActionPerformed
         // TODO add your handling code here:
+         int filaSeleccionada = jTableDatos.getSelectedRow();
+    if (filaSeleccionada != -1) {
+        int idDieta = (int) tableModel.getValueAt(filaSeleccionada, 0);
+        
+        String nombreDieta = jTextField1.getText();
+        float pesoInicial = Float.parseFloat(jTextField2.getText());
+        float pesoFinal = Float.parseFloat(jTextField3.getText());
+        int caloriasTotales = Integer.parseInt(jTextField4.getText());
+        Date fechaInicio = jDateChooser1.getDate();
+        Date fechaFin = jDateChooser2.getDate();
+        boolean estado = jRBActivoOBAJA.isSelected();
+        
+        Paciente pacienteSeleccionado = pacienteData.obtenerPacientes().get(jComboBox1.getSelectedIndex());
+
+        Dieta dietaActualizada = new Dieta(idDieta, nombreDieta, null, fechaInicio, fechaFin, pesoInicial, pesoFinal, estado, caloriasTotales, pacienteSeleccionado, pacienteSeleccionado.getIdPaciente());
+
+        dietaData.actualizarDieta(dietaActualizada);
+        cargarDietas();
+        limpiarCampos();
+    } else {
+        JOptionPane.showMessageDialog(this, "Seleccione una dieta para actualizar.");
+    }
     }//GEN-LAST:event_jBactualizarActionPerformed
 
 
@@ -345,11 +396,18 @@ public class NewJInternalFrameAltaDieta extends javax.swing.JInternalFrame {
     }
 
     private void cargarDietas() {
-        List<Dieta> dietas = dietaData.getAllDietas();
-        tableModel.setRowCount(0); // Limpiar tabla
-        for (Dieta d : dietas) {
-            tableModel.addRow(new Object[]{d.getId(), d.getNombre(), d.getPesoInicial(), d.getPesoFinal(), d.getCaloriasTotales()});
-        }
+    List<Dieta> dietas = dietaData.obtenerDietas();
+    tableModel.setRowCount(0);
+    
+    for (Dieta d : dietas) {
+        tableModel.addRow(new Object[]{
+            d.getCodDieta(), 
+            d.getNombreD(),
+            d.getPesoInicial(),  
+            d.getPesoFinal(),  
+            d.getTotalCalorias()
+        });
+    }
     }
     
         private void limpiarCampos() {
