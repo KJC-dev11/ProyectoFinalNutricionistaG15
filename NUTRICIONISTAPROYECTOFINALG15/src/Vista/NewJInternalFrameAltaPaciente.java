@@ -4,17 +4,33 @@
  */
 package Vista;
 
+import Modelo.Paciente;
+import Persistencia.PacienteData;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author MOON
  */
 public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
+    
+    private PacienteData pacienteData;
+    private DefaultTableModel modelo;
+    private ArrayList<Paciente> listaPacientes;
 
     /**
      * Creates new form NewJInternalFrameAltaPaciente
      */
     public NewJInternalFrameAltaPaciente() {
-        initComponents();
+       initComponents();
+        pacienteData = new PacienteData();
+        modelo = new DefaultTableModel();
+        listaPacientes = (ArrayList<Paciente>) pacienteData.listarPacientes();
+        configurarTabla();
+        cargarPacientes();
     }
 
     /**
@@ -31,25 +47,29 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jButtonActualizar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        txtAltura = new javax.swing.JTextField();
+        txtPesoBuscado = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jButtonGuardar = new javax.swing.JButton();
         Borrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblPacientes = new javax.swing.JTable();
         jRBEstado = new javax.swing.JRadioButton();
         jLabel6 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
+        txtPesoActual = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
         jButtonNuevo = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
 
         jLabel1.setText("Apellido");
 
@@ -66,9 +86,9 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
             }
         });
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        txtApellido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                txtApellidoActionPerformed(evt);
             }
         });
 
@@ -76,10 +96,20 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
         jLabel5.setText("PACIENTE");
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
 
         Borrar.setText("Borrar");
+        Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrarActionPerformed(evt);
+            }
+        });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblPacientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -87,10 +117,16 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Paciente", "Edad", "Alutra", "Peso"
+                "ID", "Nombre", "Apellido", "DNI"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblPacientes);
+
+        jRBEstado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRBEstadoActionPerformed(evt);
+            }
+        });
 
         jLabel6.setText("ESTADO");
 
@@ -98,15 +134,20 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
 
         jLabel8.setText("Nombre: ");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtNombreActionPerformed(evt);
             }
         });
 
         jLabel9.setText("DNI");
 
         jButtonNuevo.setText("Nuevo");
+        jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonNuevoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -142,7 +183,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addGap(18, 18, 18)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel6)
                                         .addGap(18, 18, 18)
@@ -153,8 +194,8 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
                                         .addComponent(jLabel3))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jTextField3)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE))))
+                                        .addComponent(txtAltura)
+                                        .addComponent(txtPesoActual, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
@@ -163,10 +204,10 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
                                     .addComponent(jLabel9))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -179,31 +220,31 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(9, 9, 9)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtAltura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPesoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPesoBuscado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
@@ -224,16 +265,35 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
         // TODO add your handling code here:
-        System.out.println("Paciente guardado");
+        actualizarPaciente();
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtApellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtApellidoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtApellidoActionPerformed
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtNombreActionPerformed
+
+    private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
+        // TODO add your handling code here:
+        limpiarCampos();
+    }//GEN-LAST:event_jButtonNuevoActionPerformed
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        // TODO add your handling code here:
+        guardarPaciente();
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
+        // TODO add your handling code here:
+        eliminarPaciente();
+    }//GEN-LAST:event_BorrarActionPerformed
+
+    private void jRBEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBEstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRBEstadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -253,13 +313,96 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRBEstado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTable tblPacientes;
+    private javax.swing.JTextField txtAltura;
+    private javax.swing.JTextField txtApellido;
+    private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPesoActual;
+    private javax.swing.JTextField txtPesoBuscado;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarPacientes() {
+        modelo.setRowCount(0);  // Limpiar la tabla
+        for (Paciente paciente : listaPacientes) {
+            modelo.addRow(new Object[]{paciente.getIdPaciente(), paciente.getDni(), paciente.getApellido(), paciente.getNombre()});
+        }
+    }
+    
+        private void limpiarCampos() {
+        txtNombre.setText("");
+        txtApellido.setText("");
+        txtEdad.setText("");
+        txtDni.setText("");
+        txtAltura.setText("");
+        txtPesoActual.setText("");
+        txtPesoBuscado.setText("");
+        jRBEstado.setSelected(false);
+    }
+        
+            private void guardarPaciente() {
+        try {
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            int edad = Integer.parseInt(txtEdad.getText());
+            int dni = Integer.parseInt(txtDni.getText());
+            double altura = Double.parseDouble(txtAltura.getText());
+            double pesoActual = Double.parseDouble(txtPesoActual.getText());
+            double pesoBuscado = Double.parseDouble(txtPesoBuscado.getText());
+
+            Paciente paciente = new Paciente(apellido, nombre, edad, dni, altura, pesoActual, pesoBuscado);
+            pacienteData.guardarPaciente(paciente);
+            cargarPacientes();
+            JOptionPane.showMessageDialog(this, "Paciente guardado exitosamente.");
+            limpiarCampos();
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en los datos ingresados. Verifica los valores numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+            
+             private void actualizarPaciente() {
+    int fila = tblPacientes.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un paciente para actualizar.");
+            return;
+        }
+        try {
+            int id = (int) modelo.getValueAt(fila, 0);
+            String nombre = txtNombre.getText();
+            String apellido = txtApellido.getText();
+            int edad = Integer.parseInt(txtEdad.getText());
+            int dni = Integer.parseInt(txtDni.getText());
+            double altura = Double.parseDouble(txtAltura.getText());
+            double pesoActual = Double.parseDouble(txtPesoActual.getText());
+            double pesoBuscado = Double.parseDouble(txtPesoBuscado.getText());
+
+            Paciente paciente = new Paciente(id, apellido, nombre, edad, dni, altura, pesoActual, pesoBuscado);
+            pacienteData.modificarPaciente(paciente);
+            cargarPacientes();
+            JOptionPane.showMessageDialog(this, "Paciente actualizado exitosamente.");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Error en los datos ingresados. Verifica los valores numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+             
+              private void eliminarPaciente() {
+ int fila = tblPacientes.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "Seleccione un paciente para eliminar.");
+            return;
+        }
+        int id = (int) modelo.getValueAt(fila, 0);
+        pacienteData.eliminarPaciente(id);
+        cargarPacientes();
+        JOptionPane.showMessageDialog(this, "Paciente eliminado correctamente.");
+    }
+
+    private void configurarTabla() {
+        modelo.addColumn("ID");
+        modelo.addColumn("DNI");
+        modelo.addColumn("Apellido");
+        modelo.addColumn("Nombre");
+        tblPacientes.setModel(modelo);
+    }
 }

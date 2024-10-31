@@ -127,5 +127,5 @@ public class PacienteData {
         } catch (SQLException ex) {
             throw new RuntimeException("Error al eliminar paciente: " + ex.getMessage(), ex);
         }
-    }
+    }   
 }
