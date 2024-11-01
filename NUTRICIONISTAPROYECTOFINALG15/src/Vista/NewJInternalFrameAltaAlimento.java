@@ -68,6 +68,7 @@ public class NewJInternalFrameAltaAlimento extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        setBackground(new java.awt.Color(51, 51, 51));
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -79,6 +80,7 @@ public class NewJInternalFrameAltaAlimento extends javax.swing.JInternalFrame {
 
         jLabelTipo.setText("Tipo :");
 
+        jButtonGuardar.setBackground(new java.awt.Color(102, 102, 102));
         jButtonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +110,7 @@ public class NewJInternalFrameAltaAlimento extends javax.swing.JInternalFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
+        Buscar.setBackground(new java.awt.Color(102, 102, 102));
         Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
         Buscar.setText("Buscar");
         Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +119,7 @@ public class NewJInternalFrameAltaAlimento extends javax.swing.JInternalFrame {
             }
         });
 
+        Modificar.setBackground(new java.awt.Color(102, 102, 102));
         Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
         Modificar.setText("Modificar");
         Modificar.addActionListener(new java.awt.event.ActionListener() {
@@ -124,6 +128,7 @@ public class NewJInternalFrameAltaAlimento extends javax.swing.JInternalFrame {
             }
         });
 
+        Borrar.setBackground(new java.awt.Color(102, 102, 102));
         Borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tacho.png"))); // NOI18N
         Borrar.setText("Eliminar");
         Borrar.addActionListener(new java.awt.event.ActionListener() {
