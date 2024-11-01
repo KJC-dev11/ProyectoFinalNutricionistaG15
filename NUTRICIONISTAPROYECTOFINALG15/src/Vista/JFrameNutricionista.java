@@ -49,6 +49,9 @@ public class JFrameNutricionista extends javax.swing.JFrame {
         jMenuItemAltaPaciente = new javax.swing.JMenuItem();
         jMenuDietas = new javax.swing.JMenu();
         jMenuItemAltaDieta = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        RenglonMenu = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -137,6 +140,21 @@ public class JFrameNutricionista extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenuDietas);
 
+        jMenu1.setText("Menus");
+
+        jMenuItem1.setText("Menu Diario");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        RenglonMenu.setText("Renglon Menu");
+        jMenu1.add(RenglonMenu);
+
+        jMenuBar1.add(jMenu1);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -180,6 +198,10 @@ public class JFrameNutricionista extends javax.swing.JFrame {
     vistDieta.setVisible(true);
     }//GEN-LAST:event_jMenuItemAltaDietaActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -218,11 +240,14 @@ public class JFrameNutricionista extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JmenuPacientes;
+    private javax.swing.JMenuItem RenglonMenu;
     private javax.swing.JDesktopPane escritorio;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuAlimentos;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu jMenuDietas;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemAltaAlimento;
     private javax.swing.JMenuItem jMenuItemAltaDieta;
     private javax.swing.JMenuItem jMenuItemAltaPaciente;

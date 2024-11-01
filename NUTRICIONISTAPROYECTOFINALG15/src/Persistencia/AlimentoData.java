@@ -26,12 +26,13 @@ public class AlimentoData {
     }
     
         public void guardarAlimento(Alimentos alimento) {
-    String sql = "INSERT INTO alimentos (nombreComida, caloriasPorPorcion, tipoComida, detalle) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO alimentos (codComida, nombreComida, caloriasPorPorcion, tipoComida, detalle) VALUES (?, ?, ?, ?, ?)";
     try (PreparedStatement statement = con.prepareStatement(sql)) {
-        statement.setString(1, alimento.getNombreComida());
-        statement.setInt(2, alimento.getCaloriasPorPorcion());
-        statement.setString(3, alimento.getStipoComida());
-        statement.setString(4, alimento.getDetalle());
+        statement.setInt(1, alimento.getCodComida());
+        statement.setString(2, alimento.getNombreComida());
+        statement.setInt(3, alimento.getCaloriasPorPorcion());
+        statement.setString(4, alimento.getStipoComida());
+        statement.setString(5, alimento.getDetalle());
         statement.executeUpdate();
         System.out.println("Alimento guardado con exito.");
     } catch (SQLException ex) {
