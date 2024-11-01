@@ -25,15 +25,27 @@ public class Dieta {
     public Dieta(){
     }
 
+public Dieta(String nombreD, Date fechaIni, Date fechaFin, float pesoInicial, float pesoFinal, int totalCalorias, boolean estado) {
+    this.nombreD = nombreD;
+    this.fechaIni = fechaIni;
+    this.fechaFin = fechaFin;
+    this.pesoInicial = pesoInicial;
+    this.pesoFinal = pesoFinal;
+    this.totalCalorias = totalCalorias;
+    this.estado = estado;
+    this.listMenuDiario = new ArrayList<>();
+}
+
+
     public Dieta(String nombreD, List<MenuDiario> listMenuDiario, Date fechaIni, Date fechaFin, float pesoInicial, float pesoFinal, boolean estado, int totalCalorias, Paciente paciente, int idPaciente) {
         this.nombreD = nombreD;
         this.listMenuDiario =  new ArrayList<>();
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
         this.pesoInicial = pesoInicial;
-        this.pesoFinal = 0;
+        this.pesoFinal = pesoFinal;
         this.estado = estado;
-        this.totalCalorias = 0;
+        this.totalCalorias = totalCalorias;
         this.paciente = paciente;
         this.idPaciente = idPaciente;
     }
@@ -45,9 +57,9 @@ public class Dieta {
         this.fechaIni = fechaIni;
         this.fechaFin = fechaFin;
         this.pesoInicial = pesoInicial;
-        this.pesoFinal = 0;
+        this.pesoFinal = pesoFinal;
         this.estado = estado;
-        this.totalCalorias = 0;
+        this.totalCalorias = totalCalorias;
         this.paciente = paciente;
         this.idPaciente = idPaciente;
     }

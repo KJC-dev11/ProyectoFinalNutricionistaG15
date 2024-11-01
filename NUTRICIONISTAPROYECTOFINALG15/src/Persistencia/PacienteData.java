@@ -191,6 +191,33 @@ public List<Paciente> buscarPacientesPorApellido(String apellido) {
     return pacientes;
 }
 
+public Paciente buscarPacientePorId(int idPaciente) {
+    String sql = "SELECT * FROM pacientes WHERE idPaciente = ?";
+    Paciente paciente = null;
+
+    try (PreparedStatement ps = conn.prepareStatement(sql)) {
+        ps.setInt(1, idPaciente);
+        ResultSet rs = ps.executeQuery();
+
+        if (rs.next()) {
+            paciente = new Paciente();
+            paciente.setIdPaciente(rs.getInt("idPaciente"));
+            paciente.setEdad(rs.getInt("edad"));
+            paciente.setAltura(rs.getDouble("altura"));
+            paciente.setPesoActual(rs.getDouble("pesoActual"));
+            paciente.setPesoBuscado(rs.getDouble("pesoBuscado"));
+            paciente.setDni(rs.getInt("dni"));
+            paciente.setApellido(rs.getString("apellido"));
+            paciente.setNombre(rs.getString("nombre"));
+            paciente.setActivo(rs.getBoolean("activo"));
+        }
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, "Error al buscar paciente por ID: " + e.getMessage());
+    }
+
+    return paciente;
+}
+
 
 
 }

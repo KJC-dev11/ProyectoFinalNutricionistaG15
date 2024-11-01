@@ -80,6 +80,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Peso Buscado (kg):");
 
+        jButtonActualizar.setBackground(new java.awt.Color(102, 102, 102));
         jButtonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
         jButtonActualizar.setText("Actualizar");
         jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
@@ -98,6 +99,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/paciente.png"))); // NOI18N
         jLabel5.setText("PACIENTE");
 
+        jButtonGuardar.setBackground(new java.awt.Color(102, 102, 102));
         jButtonGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
         jButtonGuardar.setText("Guardar");
         jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +108,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
             }
         });
 
+        Borrar.setBackground(new java.awt.Color(102, 102, 102));
         Borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tacho.png"))); // NOI18N
         Borrar.setText("Borrar");
         Borrar.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +150,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
 
         jLabel9.setText("DNI");
 
+        jButtonNuevo.setBackground(new java.awt.Color(102, 102, 102));
         jButtonNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/nuevo.png"))); // NOI18N
         jButtonNuevo.setText("Nuevo");
         jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
@@ -155,6 +159,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
             }
         });
 
+        jBuscar.setBackground(new java.awt.Color(102, 102, 102));
         jBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/persona buscar.png"))); // NOI18N
         jBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -276,8 +281,8 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
                     .addComponent(jLabel6)
                     .addComponent(jRBEstado))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonActualizar)
                     .addComponent(jButtonGuardar)
@@ -319,6 +324,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
 
     private void jRBEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRBEstadoActionPerformed
         // TODO add your handling code here:
+        cambiarEstadoPaciente();
     }//GEN-LAST:event_jRBEstadoActionPerformed
 
     private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
@@ -501,5 +507,28 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
         actualizarTabla(resultados);
     }
 }
+    private void cambiarEstadoPaciente() {
+    int fila = tblPacientes.getSelectedRow();
+    if (fila == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione un paciente para cambiar su estado.");
+        return;
+    }
+
+    int id = (int) modelo.getValueAt(fila, 0);
+    boolean estadoActual = modelo.getValueAt(fila, 8).equals("Activo");
+
+    boolean nuevoEstado = !estadoActual;
+    
+    Paciente paciente = pacienteData.buscarPacientePorId(id);
+    if (paciente != null) {
+        paciente.setActivo(nuevoEstado);
+        pacienteData.actualizarPaciente(paciente);
+        cargarPacientes();
+        JOptionPane.showMessageDialog(this, "Estado del paciente actualizado a " + (nuevoEstado ? "Activo" : "Inactivo") + ".");
+    } else {
+        JOptionPane.showMessageDialog(this, "Error al obtener el paciente.");
+    }
+}
+
 
 }
