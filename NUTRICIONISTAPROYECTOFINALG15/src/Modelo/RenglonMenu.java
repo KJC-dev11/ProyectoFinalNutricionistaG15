@@ -18,19 +18,24 @@ public class RenglonMenu {
     public RenglonMenu() {
     }
 
-    public RenglonMenu(int nroRenglon, int codMenu, int subtotalCalorias, String alimento, double cantidadGramos) {
-        this.nroRenglon = nroRenglon;
-        this.codMenu = codMenu;
-        this.subtotalCalorias = subtotalCalorias;
-        this.alimento = alimento;
-        this.cantidadGramos = cantidadGramos;
-    }
+public RenglonMenu(int nroRenglon, int codMenu, String alimento, double cantidadGramos, int caloriasPorPorcion) {
+    this.nroRenglon = nroRenglon;
+    this.codMenu = codMenu;
+    this.alimento = alimento;
+    this.cantidadGramos = cantidadGramos;
+    this.subtotalCalorias = calcularSubtotalCalorias(caloriasPorPorcion);
+}
+
 
     public RenglonMenu(int codMenu, int subtotalCalorias, String alimento, double cantidadGramos) {
         this.codMenu = codMenu;
         this.subtotalCalorias = subtotalCalorias;
         this.alimento = alimento;
         this.cantidadGramos = cantidadGramos;
+    }
+
+    public RenglonMenu(int codMenu, String alimento, double cantidad, int subCalorias) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public int getNroRenglon() {
@@ -69,15 +74,22 @@ public class RenglonMenu {
         return cantidadGramos;
     }
 
-    public void setCantidadGramos(double cantidadGramos) {
+public void setCantidadGramos(double cantidadGramos) {
+    if (cantidadGramos > 0) {
         this.cantidadGramos = cantidadGramos;
+    } else {
+        throw new IllegalArgumentException("La cantidad de gramos debe ser positiva.");
     }
+}
 
     @Override
     public String toString() {
         return "RenglonMenu{" + "nroRenglon=" + nroRenglon + ", codMenu=" + codMenu + ", subtotalCalorias=" + subtotalCalorias + ", alimento=" + alimento + ", cantidadGramos=" + cantidadGramos + '}';
     }
     
-    
+    public int calcularSubtotalCalorias(int caloriasPorPorcion) {
+    return (int) (this.cantidadGramos * caloriasPorPorcion / 100);
+}
+
     
 }

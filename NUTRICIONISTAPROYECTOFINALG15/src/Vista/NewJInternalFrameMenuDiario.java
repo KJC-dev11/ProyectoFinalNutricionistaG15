@@ -4,17 +4,31 @@
  */
 package Vista;
 
+import Modelo.MenuDiario;
+import Persistencia.MenuDiarioData;
+import java.util.Date;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import java.util.List;
+import java.text.SimpleDateFormat;
 /**
  *
  * @author MOON
  */
 public class NewJInternalFrameMenuDiario extends javax.swing.JInternalFrame {
+    
+    private MenuDiarioData menuDiarioData;
+    private DefaultTableModel modelo;
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 
     /**
      * Creates new form NewJInternalFrameMenuDiario
      */
     public NewJInternalFrameMenuDiario() {
-        initComponents();
+                initComponents();
+        menuDiarioData = new MenuDiarioData();
+        modelo = (DefaultTableModel) jTDatos.getModel();
+        cargarDatos();
     }
 
     /**
@@ -34,14 +48,14 @@ public class NewJInternalFrameMenuDiario extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
+        jTDatos = new javax.swing.JTable();
+        jTextFieldCodMenu = new javax.swing.JTextField();
+        jTextFieldCaloriasMenu = new javax.swing.JTextField();
         Guardar = new javax.swing.JButton();
         Modificar = new javax.swing.JButton();
         Eliminar = new javax.swing.JButton();
         Buscar = new javax.swing.JButton();
+        jDateChooserDia = new com.toedter.calendar.JDateChooser();
 
         setClosable(true);
 
@@ -56,7 +70,13 @@ public class NewJInternalFrameMenuDiario extends javax.swing.JInternalFrame {
 
         jLabel4.setText("Estado");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+
+        jTDatos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -64,18 +84,54 @@ public class NewJInternalFrameMenuDiario extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Cod Menu", "Dia", "Calorias", "Estado"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jTDatos);
 
-        Guardar.setText("jButton1");
+        jTextFieldCodMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCodMenuActionPerformed(evt);
+            }
+        });
 
-        Modificar.setText("jButton2");
+        jTextFieldCaloriasMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldCaloriasMenuActionPerformed(evt);
+            }
+        });
 
-        Eliminar.setText("jButton3");
+        Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/guardar.png"))); // NOI18N
+        Guardar.setText("Guardar");
+        Guardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarActionPerformed(evt);
+            }
+        });
 
-        Buscar.setText("jButton4");
+        Modificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/editar.png"))); // NOI18N
+        Modificar.setText("Modificar");
+        Modificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ModificarActionPerformed(evt);
+            }
+        });
+
+        Eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/tacho.png"))); // NOI18N
+        Eliminar.setText("Eliminar");
+        Eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EliminarActionPerformed(evt);
+            }
+        });
+
+        Buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/lupa.png"))); // NOI18N
+        Buscar.setText("Buscar");
+        Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,38 +143,43 @@ public class NewJInternalFrameMenuDiario extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(294, 294, 294)
-                        .addComponent(jLabel5))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(98, 98, 98)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(jRadioButton1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jTextField3))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 261, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextField2)))
+                                .addGap(294, 294, 294)
+                                .addComponent(jLabel5))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Guardar)
-                                .addGap(18, 18, 18)
-                                .addComponent(Modificar)
-                                .addGap(18, 18, 18)
-                                .addComponent(Eliminar)
-                                .addGap(18, 18, 18)
-                                .addComponent(Buscar)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(98, 98, 98)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(jRadioButton1))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addComponent(jTextFieldCaloriasMenu))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel1)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                                    .addGap(46, 46, 46)
+                                                    .addComponent(jLabel2)))
+                                            .addGap(18, 18, 18)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jTextFieldCodMenu, javax.swing.GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE)
+                                                .addComponent(jDateChooserDia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(Guardar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Modificar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Eliminar)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(Buscar)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -130,32 +191,147 @@ public class NewJInternalFrameMenuDiario extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldCodMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jRadioButton1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Guardar)
-                    .addComponent(Modificar)
-                    .addComponent(Eliminar)
-                    .addComponent(Buscar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(jTextFieldCaloriasMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(jRadioButton1))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Guardar)
+                            .addComponent(Modificar)
+                            .addComponent(Eliminar)
+                            .addComponent(Buscar)))
+                    .addComponent(jDateChooserDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldCodMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCodMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCodMenuActionPerformed
+
+    private void jTextFieldCaloriasMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCaloriasMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCaloriasMenuActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarActionPerformed
+        // TODO add your handling code here:
+        try {
+            MenuDiario menu = new MenuDiario();
+            Date fechaSeleccionada = jDateChooserDia.getDate(); 
+            if (fechaSeleccionada == null) {
+                JOptionPane.showMessageDialog(this, "Seleccione un día válido.");
+                return;
+            }
+            menu.setDia(dateFormat.format(fechaSeleccionada)); // Formatea la fecha y guárdala en el objeto
+            
+            menu.setCaloriasDelMenu(Integer.parseInt(jTextFieldCaloriasMenu.getText()));
+            menu.setEstado(jRadioButton1.isSelected() ? "Activo" : "Inactivo");
+            menu.setCodDieta(Integer.parseInt(jTextFieldCodMenu.getText()));
+
+            boolean exito = menuDiarioData.agregarMenuDiario(menu);
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Menú diario guardado correctamente.");
+                cargarDatos();
+                limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al guardar el menú diario.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos en todos los campos.");
+        }
+    }//GEN-LAST:event_GuardarActionPerformed
+
+    private void ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarActionPerformed
+        // TODO add your handling code here:
+ try {
+            MenuDiario menu = new MenuDiario();
+            menu.setCodMenu(Integer.parseInt(jTextFieldCodMenu.getText()));
+            Date fechaSeleccionada = jDateChooserDia.getDate();
+            if (fechaSeleccionada == null) {
+                JOptionPane.showMessageDialog(this, "Seleccione un día válido.");
+                return;
+            }
+            menu.setDia(dateFormat.format(fechaSeleccionada));
+            menu.setCaloriasDelMenu(Integer.parseInt(jTextFieldCaloriasMenu.getText()));
+            menu.setEstado(jRadioButton1.isSelected() ? "Activo" : "Inactivo");
+
+            boolean exito = menuDiarioData.actualizarMenuDiario(menu);
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Menú diario modificado correctamente.");
+                cargarDatos();
+                limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al modificar el menú diario.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos en todos los campos.");
+        }
+    }//GEN-LAST:event_ModificarActionPerformed
+
+    private void EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EliminarActionPerformed
+        // TODO add your handling code here:
+       if (jTextFieldCodMenu.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un código de menú válido para eliminar.");
+            return;
+        }
+
+        try {
+            int codMenu = Integer.parseInt(jTextFieldCodMenu.getText());
+            boolean exito = menuDiarioData.eliminarMenuDiario(codMenu);
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Menú diario eliminado correctamente.");
+                cargarDatos();
+                limpiarCampos();
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar el menú diario.");
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un código válido.");
+        }
+    }//GEN-LAST:event_EliminarActionPerformed
+
+    private void BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarActionPerformed
+        // TODO add your handling code here:
+        if (jTextFieldCodMenu.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un código de menú válido para buscar.");
+            return;
+        }
+
+        try {
+            int codMenu = Integer.parseInt(jTextFieldCodMenu.getText());
+            MenuDiario menu = menuDiarioData.buscarMenuDiarioPorId(codMenu);
+            if (menu != null) {
+                jDateChooserDia.setDate(dateFormat.parse(menu.getDia()));
+                jTextFieldCaloriasMenu.setText(String.valueOf(menu.getCaloriasDelMenu()));
+                jRadioButton1.setSelected("Activo".equals(menu.getEstado()));
+            } else {
+                JOptionPane.showMessageDialog(this, "Menú diario no encontrado.");
+                limpiarCampos();
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un código válido.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar la fecha: " + e.getMessage());
+        }
+    }//GEN-LAST:event_BuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -163,6 +339,7 @@ public class NewJInternalFrameMenuDiario extends javax.swing.JInternalFrame {
     private javax.swing.JButton Eliminar;
     private javax.swing.JButton Guardar;
     private javax.swing.JButton Modificar;
+    private com.toedter.calendar.JDateChooser jDateChooserDia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -171,9 +348,28 @@ public class NewJInternalFrameMenuDiario extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable jTDatos;
+    private javax.swing.JTextField jTextFieldCaloriasMenu;
+    private javax.swing.JTextField jTextFieldCodMenu;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos() {
+                modelo.setRowCount(0);
+        List<MenuDiario> menus = menuDiarioData.obtenerTodosLosMenusDiarios();
+        for (MenuDiario menu : menus) {
+            modelo.addRow(new Object[]{
+                menu.getCodMenu(),
+                menu.getDia(),
+                menu.getCaloriasDelMenu(),
+                menu.getEstado()
+            });
+        }
+    }
+    
+        private void limpiarCampos() {
+        jTextFieldCodMenu.setText("");
+        jDateChooserDia.setDate(null);
+        jTextFieldCaloriasMenu.setText("");
+        jRadioButton1.setSelected(false);
+    }
 }
