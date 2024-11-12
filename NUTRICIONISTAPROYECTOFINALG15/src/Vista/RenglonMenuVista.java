@@ -22,8 +22,9 @@ public class RenglonMenuVista extends javax.swing.JInternalFrame {
      * Creates new form RenglonMenu
      */
     public RenglonMenuVista() {
-         initComponents();
-         agregarOyentes();
+        initComponents();
+        agregarOyentes();
+        cargarComidasEnComboBox();
         actualizarTabla();
     }
 
@@ -236,39 +237,70 @@ public class RenglonMenuVista extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCantidadActionPerformed
 
-        private void calcularSubCalorias() {
-    try {
-        String alimento = jComboComida.getSelectedItem().toString();
-        int caloriasPorPorcion = obtenerCaloriasPorPorcion(alimento);
-        double cantidad = Double.parseDouble(jCantidad.getText().trim());
-        
-        RenglonMenu renglon = new RenglonMenu();
-        renglon.setCantidadGramos(cantidad);
-        int subtotalCalorias = renglon.calcularSubtotalCalorias(caloriasPorPorcion);
-        
-        jSubCalorias.setText(String.valueOf(subtotalCalorias));
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Ingrese una cantidad válida.");
-    }
-    }
-    
-    private void guardarRenglon() {
+    private void calcularSubCalorias() {
         try {
-            int codMenu = Integer.parseInt(jNumRenglon.getText().trim());
             String alimento = jComboComida.getSelectedItem().toString();
             double cantidad = Double.parseDouble(jCantidad.getText().trim());
-            int subCalorias = Integer.parseInt(jSubCalorias.getText().trim());
-
-            RenglonMenu renglonMenu;
-            renglonMenu = new RenglonMenu(codMenu, alimento, cantidad, subCalorias);
-            renglonMenuData.agregarRenglonMenu(renglonMenu);
-
-            actualizarTabla();
-            JOptionPane.showMessageDialog(this, "Renglón guardado correctamente.");
+            int caloriasPorPorcion = obtenerCaloriasPorPorcion(alimento);
+            int subtotalCalorias = (int)(cantidad * caloriasPorPorcion);
+            jSubCalorias.setText(String.valueOf(subtotalCalorias));
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Ingrese datos válidos en los campos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese una cantidad válida en formato numérico.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
+    
+private void guardarRenglon() {
+    try {
+        int codMenu = Integer.parseInt(jNumRenglon.getText().trim());
+        String nombreComida = (String) jComboComida.getSelectedItem();
+        if (nombreComida == null || nombreComida.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Seleccione una comida válida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int codComida = renglonMenuData.obtenerCodigoComidaPorNombre(nombreComida);
+        if (codComida == -1) {
+            JOptionPane.showMessageDialog(this, "No se encontró el código de la comida seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        double cantidad;
+        try {
+            cantidad = Double.parseDouble(jCantidad.getText().trim());
+            if (cantidad <= 0) {
+                JOptionPane.showMessageDialog(this, "La cantidad debe ser un número positivo.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese una cantidad válida.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        int subtotalCalorias;
+        try {
+            subtotalCalorias = Integer.parseInt(jSubCalorias.getText().trim());
+            if (subtotalCalorias <= 0) {
+                JOptionPane.showMessageDialog(this, "El subtotal de calorías debe ser un número positivo.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Ingrese un subtotal de calorías válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        RenglonMenu renglonMenu = new RenglonMenu(codMenu, codComida, cantidad, subtotalCalorias);
+        try {
+            renglonMenuData.agregarRenglonMenu(renglonMenu);
+            actualizarTabla();
+            JOptionPane.showMessageDialog(this, "Renglón guardado correctamente.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al guardar el renglón: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Ingrese datos válidos en los campos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
     
     private void buscarRenglon() {
         try {
@@ -276,7 +308,7 @@ public class RenglonMenuVista extends javax.swing.JInternalFrame {
             RenglonMenu renglonMenu = renglonMenuData.buscarRenglonPorNumero(nroRenglon);
 
             if (renglonMenu != null) {
-                jComboComida.setSelectedItem(renglonMenu.getAlimento());
+                jComboComida.setSelectedItem(renglonMenu.getCodComida());
                 jCantidad.setText(String.valueOf(renglonMenu.getCantidadGramos()));
                 jSubCalorias.setText(String.valueOf(renglonMenu.getSubtotalCalorias()));
             } else {
@@ -288,28 +320,30 @@ public class RenglonMenuVista extends javax.swing.JInternalFrame {
     }
     
     private void modificarRenglon() {
-        try {
-            int nroRenglon = Integer.parseInt(jNumRenglon.getText().trim());
-            int codMenu = Integer.parseInt(jNumRenglon.getText().trim());
-            String alimento = jComboComida.getSelectedItem().toString();
-            double cantidad = Double.parseDouble(jCantidad.getText().trim());
-            int subCalorias = Integer.parseInt(jSubCalorias.getText().trim());
+    try {
+        int nroRenglon = Integer.parseInt(jNumRenglon.getText().trim());
+        String nombreComida = jComboComida.getSelectedItem().toString();
+        int codComida = renglonMenuData.obtenerCodigoComidaPorNombre(nombreComida);
+        double cantidad = Double.parseDouble(jCantidad.getText().trim());
+        int subCalorias = Integer.parseInt(jSubCalorias.getText().trim());
 
-            RenglonMenu renglonMenu = new RenglonMenu(nroRenglon, codMenu, alimento, cantidad, subCalorias);
+        if (codComida != -1) {
+            RenglonMenu renglonMenu = new RenglonMenu(nroRenglon, codComida, cantidad, subCalorias);
             renglonMenuData.actualizarRenglonMenu(renglonMenu);
-
             actualizarTabla();
-            JOptionPane.showMessageDialog(this, "Renglón actualizado correctamente.");
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Ingrese datos válidos en los campos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Renglón modificado correctamente.");
+        } else {
+            JOptionPane.showMessageDialog(this, "No se encontró el código de la comida seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Ingrese datos válidos en los campos numéricos.", "Error", JOptionPane.ERROR_MESSAGE);
+    }
     }
 
     private void eliminarRenglon() {
         try {
             int nroRenglon = Integer.parseInt(jNumRenglon.getText().trim());
             renglonMenuData.eliminarRenglonMenu(nroRenglon);
-
             actualizarTabla();
             JOptionPane.showMessageDialog(this, "Renglón eliminado correctamente.");
         } catch (NumberFormatException e) {
@@ -317,36 +351,21 @@ public class RenglonMenuVista extends javax.swing.JInternalFrame {
         }
     }
 
-private void actualizarTabla() {
-    if (jNumRenglon.getText().trim().isEmpty()) {
-        JOptionPane.showMessageDialog(this, "Ingrese un número de renglón válido.", "Error", JOptionPane.ERROR_MESSAGE);
-        return;
-    }
-
-    try {
-        int codMenu = Integer.parseInt(jNumRenglon.getText().trim());
-        List<RenglonMenu> renglones = renglonMenuData.obtenerRenglonesPorMenu(codMenu);
-
+    private void actualizarTabla() {
+        List<RenglonMenu> renglones = renglonMenuData.obtenerTodosLosRenglones();
         DefaultTableModel model = (DefaultTableModel) jTableData.getModel();
         model.setRowCount(0);
 
         for (RenglonMenu renglon : renglones) {
             model.addRow(new Object[]{
-                renglon.getNroRenglon(),
                 renglon.getCodMenu(),
-                renglon.getAlimento(),
+                renglon.getCodComida(),
                 renglon.getCantidadGramos(),
                 renglon.getSubtotalCalorias()
             });
         }
-    } catch (NumberFormatException e) {
-        JOptionPane.showMessageDialog(this, "Ingrese un número de renglón válido.", "Error", JOptionPane.ERROR_MESSAGE);
     }
-}
-
-
-
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Buscar;
     private javax.swing.JButton Eliminar;
@@ -367,27 +386,22 @@ private void actualizarTabla() {
     // End of variables declaration//GEN-END:variables
 
     private int obtenerCaloriasPorPorcion(String alimento) {
-                switch (alimento) {
-            case "Arroz":
-                return 130;
-            case "Pollo":
-                return 200;
-            default:
-                return 100;
-        }
+        return renglonMenuData.obtenerCaloriasPorComida(alimento);
     }
 
     private void agregarOyentes() {
-        jComboComida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jCantidad.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
                 calcularSubCalorias();
             }
         });
-        
-                jCantidad.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                calcularSubCalorias();
-            }
-        });
+    }
+    
+    private void cargarComidasEnComboBox() {
+        List<String> comidas = renglonMenuData.obtenerNombresComidas();
+        jComboComida.removeAllItems();
+        for (String comida : comidas) {
+            jComboComida.addItem(comida);
+        }
     }
 }

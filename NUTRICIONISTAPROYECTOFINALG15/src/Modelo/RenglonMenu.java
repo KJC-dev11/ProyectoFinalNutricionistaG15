@@ -1,44 +1,38 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Modelo;
 
-/**
- *
- * @author MOON
- */
 public class RenglonMenu {
     private int nroRenglon;
     private int codMenu;
     private int subtotalCalorias;
-    private String alimento;
+    private int codComida; 
     private double cantidadGramos;
 
     public RenglonMenu() {
     }
 
-public RenglonMenu(int nroRenglon, int codMenu, String alimento, double cantidadGramos, int caloriasPorPorcion) {
-    this.nroRenglon = nroRenglon;
-    this.codMenu = codMenu;
-    this.alimento = alimento;
-    this.cantidadGramos = cantidadGramos;
-    this.subtotalCalorias = calcularSubtotalCalorias(caloriasPorPorcion);
-}
+    public RenglonMenu(int nroRenglon, int codComida, double cantidadGramos, int subtotalCalorias) {
+        this.nroRenglon = nroRenglon;
+        this.codComida = codComida;
+        this.cantidadGramos = cantidadGramos;
+        this.subtotalCalorias = subtotalCalorias;
+    }
 
-
-    public RenglonMenu(int codMenu, int subtotalCalorias, String alimento, double cantidadGramos) {
+    public RenglonMenu(int nroRenglon, int codMenu, int codComida, double cantidadGramos, int caloriasPorPorcion) {
+        this.nroRenglon = nroRenglon;
+        this.codMenu = codMenu;
+        this.codComida = codComida;
+        this.cantidadGramos = cantidadGramos;
+        this.subtotalCalorias = calcularSubtotalCalorias(caloriasPorPorcion);
+    }
+    
+        public RenglonMenu(int codMenu, int subtotalCalorias, int codComida, double cantidadGramos) {
         this.codMenu = codMenu;
         this.subtotalCalorias = subtotalCalorias;
-        this.alimento = alimento;
+        this.codComida = codComida;
         this.cantidadGramos = cantidadGramos;
     }
 
-    public RenglonMenu(int codMenu, String alimento, double cantidad, int subCalorias) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public int getNroRenglon() {
+ public int getNroRenglon() {
         return nroRenglon;
     }
 
@@ -62,34 +56,38 @@ public RenglonMenu(int nroRenglon, int codMenu, String alimento, double cantidad
         this.subtotalCalorias = subtotalCalorias;
     }
 
-    public String getAlimento() {
-        return alimento;
+    public int getCodComida() {
+        return codComida;
     }
 
-    public void setAlimento(String alimento) {
-        this.alimento = alimento;
+    public void setCodComida(int codComida) {
+        this.codComida = codComida;
     }
 
     public double getCantidadGramos() {
         return cantidadGramos;
     }
 
-public void setCantidadGramos(double cantidadGramos) {
-    if (cantidadGramos > 0) {
-        this.cantidadGramos = cantidadGramos;
-    } else {
-        throw new IllegalArgumentException("La cantidad de gramos debe ser positiva.");
+    public void setCantidadGramos(double cantidadGramos) {
+        if (cantidadGramos > 0) {
+            this.cantidadGramos = cantidadGramos;
+        } else {
+            throw new IllegalArgumentException("La cantidad de gramos debe ser positiva.");
+        }
     }
-}
 
     @Override
     public String toString() {
-        return "RenglonMenu{" + "nroRenglon=" + nroRenglon + ", codMenu=" + codMenu + ", subtotalCalorias=" + subtotalCalorias + ", alimento=" + alimento + ", cantidadGramos=" + cantidadGramos + '}';
+        return "RenglonMenu{" +
+               "nroRenglon=" + nroRenglon +
+               ", codMenu=" + codMenu +
+               ", subtotalCalorias=" + subtotalCalorias +
+               ", codComida=" + codComida +
+               ", cantidadGramos=" + cantidadGramos +
+               '}';
     }
-    
-    public int calcularSubtotalCalorias(int caloriasPorPorcion) {
-    return (int) (this.cantidadGramos * caloriasPorPorcion / 100);
-}
 
-    
+    public int calcularSubtotalCalorias(int caloriasPorPorcion) {
+        return (int) (this.cantidadGramos * caloriasPorPorcion / 100);
+    }
 }
