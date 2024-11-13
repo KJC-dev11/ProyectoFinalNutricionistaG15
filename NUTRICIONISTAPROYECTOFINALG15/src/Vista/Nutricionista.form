@@ -184,6 +184,9 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="2"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbMenuPacienteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jbMenuAlimento">
               <Properties>

@@ -6,7 +6,9 @@
 package Vista;
 
 import Vista.Paneles.Inicio;
+import Vista.Paneles.Paciente;
 import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import java.awt.BorderLayout;
 import java.time.LocalDate;
@@ -79,6 +81,11 @@ public class Nutricionista extends javax.swing.JFrame {
         jbMenuPaciente.setBorderPainted(false);
         jbMenuPaciente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbMenuPaciente.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jbMenuPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbMenuPacienteActionPerformed(evt);
+            }
+        });
 
         jbMenuAlimento.setBackground(new java.awt.Color(0, 204, 0));
         jbMenuAlimento.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
@@ -305,15 +312,33 @@ public class Nutricionista extends javax.swing.JFrame {
     }//GEN-LAST:event_jbMenuDiarioActionPerformed
 
     private void jbInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInicioActionPerformed
-        // TODO add your handling code here:
+        Inicio p1 = new Inicio();
+        p1.setSize(750, 430);
+        p1.setLocation(0,0);
+
+        jpContenido.removeAll();
+        jpContenido.add(p1, BorderLayout.CENTER);
+        jpContenido.revalidate();
+        jpContenido.repaint();
     }//GEN-LAST:event_jbInicioActionPerformed
+
+    private void jbMenuPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuPacienteActionPerformed
+        Paciente p1 = new Paciente();
+        p1.setSize(750, 430);
+        p1.setLocation(0,0);
+    
+        jpContenido.removeAll();
+        jpContenido.add(p1, BorderLayout.CENTER);
+        jpContenido.revalidate();
+        jpContenido.repaint();  
+    }//GEN-LAST:event_jbMenuPacienteActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        FlatMaterialLighterIJTheme.setup();
+        FlatGitHubIJTheme.setup();
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
