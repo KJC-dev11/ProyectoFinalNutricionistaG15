@@ -16,9 +16,14 @@ import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
 import java.awt.BorderLayout;
+import java.awt.HeadlessException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JSeparator;
 
 /**
  *
@@ -34,6 +39,25 @@ public class Nutricionista extends javax.swing.JFrame {
         setDate();
         initContent();
     }
+
+    public Nutricionista(JPanel Background, JLabel jLabel1, JLabel jLabel2, JSeparator jSeparator2, JButton jbInicio, JButton jbMenuAlimento, JButton jbMenuDiario, JButton jbMenuDieta, JButton jbMenuPaciente, JButton jbRenglon, JLabel jlFecha, JLabel jlTitulo, JPanel jpContenido, JPanel jpHeader, JPanel jpMenu) throws HeadlessException {
+        this.Background = Background;
+        this.jLabel1 = jLabel1;
+        this.jLabel2 = jLabel2;
+        this.jSeparator2 = jSeparator2;
+        this.jbInicio = jbInicio;
+        this.jbMenuAlimento = jbMenuAlimento;
+        this.jbMenuDiario = jbMenuDiario;
+        this.jbMenuDieta = jbMenuDieta;
+        this.jbMenuPaciente = jbMenuPaciente;
+        this.jbRenglon = jbRenglon;
+        this.jlFecha = jlFecha;
+        this.jlTitulo = jlTitulo;
+        this.jpContenido = jpContenido;
+        this.jpHeader = jpHeader;
+        this.jpMenu = jpMenu;
+    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
