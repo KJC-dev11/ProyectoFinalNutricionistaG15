@@ -5,8 +5,10 @@
  */
 package Vista;
 
-import Vista.Paneles.Inicio;
-import Vista.Paneles.Paciente;
+import Modelo.MenuDiario;
+import Vista.Paneles.VistaInicio;
+import Vista.Paneles.VistaPaciente;
+import Vista.Paneles.VistaMenuDiario;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
@@ -308,11 +310,18 @@ public class Nutricionista extends javax.swing.JFrame {
     }//GEN-LAST:event_jbMenuDietaActionPerformed
 
     private void jbMenuDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuDiarioActionPerformed
-        // TODO add your handling code here:
+        VistaMenuDiario p1 = new VistaMenuDiario();
+        p1.setSize(750, 430);
+        p1.setLocation(0,0);
+
+        jpContenido.removeAll();
+        jpContenido.add(p1, BorderLayout.CENTER);
+        jpContenido.revalidate();
+        jpContenido.repaint();
     }//GEN-LAST:event_jbMenuDiarioActionPerformed
 
     private void jbInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbInicioActionPerformed
-        Inicio p1 = new Inicio();
+        VistaInicio p1 = new VistaInicio();
         p1.setSize(750, 430);
         p1.setLocation(0,0);
 
@@ -323,7 +332,7 @@ public class Nutricionista extends javax.swing.JFrame {
     }//GEN-LAST:event_jbInicioActionPerformed
 
     private void jbMenuPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuPacienteActionPerformed
-        Paciente p1 = new Paciente();
+        VistaPaciente p1 = new VistaPaciente();
         p1.setSize(750, 430);
         p1.setLocation(0,0);
     
@@ -373,7 +382,7 @@ private void setDate(){
 }
 
 private void initContent(){
-    Inicio p1 = new Inicio();
+    VistaInicio p1 = new VistaInicio();
     p1.setSize(750, 430);
     p1.setLocation(0,0);
     
