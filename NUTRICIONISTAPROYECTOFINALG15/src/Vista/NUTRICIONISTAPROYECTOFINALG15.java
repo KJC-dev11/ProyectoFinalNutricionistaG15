@@ -7,7 +7,9 @@ package Vista;
 import Modelo.Paciente;
 import Persistencia.PacienteData;
 import Modelo.Conexion;
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import java.sql.Connection;
+import javax.swing.JFrame;
 /**
  *
  * @author MOON
@@ -74,5 +76,14 @@ public class NUTRICIONISTAPROYECTOFINALG15 {
         //} else {
         //    System.out.println("Paciente encontrado (debería haber sido dado de baja): " + pacienteBaja);
        // }
+       
+        FlatGitHubIJTheme.setup();
+       
+        Nutricionista ventana = new Nutricionista();
+        
+        ventana.setSize(1000, 700);
+        ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventana.setVisible(true);
     }
+    
 }
