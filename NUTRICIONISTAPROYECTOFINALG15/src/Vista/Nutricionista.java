@@ -6,12 +6,6 @@
 package Vista;
 
 import Modelo.MenuDiario;
-import Vista.Paneles.VistaAlimento;
-import Vista.Paneles.VistaDieta;
-import Vista.Paneles.VistaInicio;
-import Vista.Paneles.VistaPaciente;
-import Vista.Paneles.VistaMenuDiario;
-import Vista.Paneles.VistaRenglon;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
