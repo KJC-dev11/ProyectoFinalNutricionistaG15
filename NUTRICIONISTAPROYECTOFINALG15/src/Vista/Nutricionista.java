@@ -6,6 +6,7 @@
 package Vista;
 
 import Modelo.MenuDiario;
+import Vista.Paneles.VistaAlimento;
 import Vista.Paneles.VistaDieta;
 import Vista.Paneles.VistaInicio;
 import Vista.Paneles.VistaPaciente;
@@ -301,7 +302,14 @@ public class Nutricionista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbMenuAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuAlimentoActionPerformed
-        // TODO add your handling code here:
+        VistaAlimento p1 = new VistaAlimento();
+        p1.setSize(750, 430);
+        p1.setLocation(0,0);
+
+        jpContenido.removeAll();
+        jpContenido.add(p1, BorderLayout.CENTER);
+        jpContenido.revalidate();
+        jpContenido.repaint();
     }//GEN-LAST:event_jbMenuAlimentoActionPerformed
 
     private void jbRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRenglonActionPerformed
