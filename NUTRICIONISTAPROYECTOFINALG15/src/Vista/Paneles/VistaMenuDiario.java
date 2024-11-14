@@ -5,17 +5,30 @@
  */
 package Vista.Paneles;
 
+import Modelo.MenuDiario;
+import Persistencia.MenuDiarioData;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author FrancoPC
  */
 public class VistaMenuDiario extends javax.swing.JPanel {
 
-    /**
-     * Creates new form MenuDiario
-     */
+
+    private MenuDiarioData menuDiarioData;
+    private DefaultTableModel modelo;
+    private static final SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    
     public VistaMenuDiario() {
         initComponents();
+        menuDiarioData = new MenuDiarioData();
+        modelo = (DefaultTableModel) jtMenuDiario.getModel();
+        cargarDatos();        
     }
 
     /**
@@ -33,16 +46,16 @@ public class VistaMenuDiario extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jTextField2 = new javax.swing.JTextField();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jtfCodMenu = new javax.swing.JTextField();
+        jdcDia = new com.toedter.calendar.JDateChooser();
+        jtfCalorias = new javax.swing.JTextField();
+        jrbEstado = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jtMenuDiario = new javax.swing.JTable();
+        jbBuscar = new javax.swing.JButton();
+        jbGuardar = new javax.swing.JButton();
+        jbModificar = new javax.swing.JButton();
+        jbBorrar = new javax.swing.JButton();
 
         setMaximumSize(new java.awt.Dimension(750, 430));
         setMinimumSize(new java.awt.Dimension(750, 430));
@@ -72,26 +85,26 @@ public class VistaMenuDiario extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Estado:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setForeground(new java.awt.Color(0, 0, 0));
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jtfCodMenu.setBackground(new java.awt.Color(255, 255, 255));
+        jtfCodMenu.setForeground(new java.awt.Color(0, 0, 0));
+        jtfCodMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jtfCodMenuActionPerformed(evt);
             }
         });
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jDateChooser1.setForeground(new java.awt.Color(0, 0, 0));
+        jdcDia.setBackground(new java.awt.Color(255, 255, 255));
+        jdcDia.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setForeground(new java.awt.Color(0, 0, 0));
+        jtfCalorias.setBackground(new java.awt.Color(255, 255, 255));
+        jtfCalorias.setForeground(new java.awt.Color(0, 0, 0));
 
-        jRadioButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setForeground(new java.awt.Color(0, 0, 0));
+        jrbEstado.setBackground(new java.awt.Color(255, 255, 255));
+        jrbEstado.setForeground(new java.awt.Color(0, 0, 0));
 
-        jTable1.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(0, 0, 0));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jtMenuDiario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jtMenuDiario.setForeground(new java.awt.Color(0, 0, 0));
+        jtMenuDiario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -110,29 +123,39 @@ public class VistaMenuDiario extends javax.swing.JPanel {
                 "Cod. Menu", "Dias", "Calorias", "Estado"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(jtMenuDiario);
 
-        jButton1.setBackground(new java.awt.Color(0, 153, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\lupa.png")); // NOI18N
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jbBuscar.setBackground(new java.awt.Color(0, 153, 0));
+        jbBuscar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\lupa.png")); // NOI18N
+        jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jbBuscarActionPerformed(evt);
             }
         });
 
-        jButton2.setBackground(new java.awt.Color(0, 153, 0));
-        jButton2.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\guardar.png")); // NOI18N
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbGuardar.setBackground(new java.awt.Color(0, 153, 0));
+        jbGuardar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\guardar.png")); // NOI18N
+        jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbGuardarActionPerformed(evt);
             }
         });
 
-        jButton3.setBackground(new java.awt.Color(0, 153, 0));
-        jButton3.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\editar.png")); // NOI18N
+        jbModificar.setBackground(new java.awt.Color(0, 153, 0));
+        jbModificar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\editar.png")); // NOI18N
+        jbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbModificarActionPerformed(evt);
+            }
+        });
 
-        jButton4.setBackground(new java.awt.Color(0, 153, 0));
-        jButton4.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\tacho.png")); // NOI18N
+        jbBorrar.setBackground(new java.awt.Color(0, 153, 0));
+        jbBorrar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\tacho.png")); // NOI18N
+        jbBorrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBorrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -155,7 +178,7 @@ public class VistaMenuDiario extends javax.swing.JPanel {
                                 .addGap(4, 4, 4)
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jtfCodMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel3)
@@ -163,15 +186,15 @@ public class VistaMenuDiario extends javax.swing.JPanel {
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton1)
-                                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jdcDia, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jtfCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jrbEstado))))
                         .addGap(78, 78, 78)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton4)
-                    .addComponent(jButton1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2))
+                    .addComponent(jbBorrar)
+                    .addComponent(jbBuscar)
+                    .addComponent(jbModificar)
+                    .addComponent(jbGuardar))
                 .addGap(137, 137, 137))
         );
         jPanel1Layout.setVerticalGroup(
@@ -181,31 +204,32 @@ public class VistaMenuDiario extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(jbBuscar)
                         .addGap(10, 10, 10)
-                        .addComponent(jButton3))
+                        .addComponent(jbModificar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtfCodMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jdcDia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtfCalorias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(10, 10, 10)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jLabel5))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jrbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(jButton2)
+                        .addComponent(jbGuardar)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton4)
+                        .addComponent(jbBorrar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
@@ -225,35 +249,179 @@ public class VistaMenuDiario extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jtfCodMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfCodMenuActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jtfCodMenuActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    private void jbGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuardarActionPerformed
+        guardar();
+    }//GEN-LAST:event_jbGuardarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jbBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscarActionPerformed
+        buscar();
+    }//GEN-LAST:event_jbBuscarActionPerformed
+
+    private void jbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbModificarActionPerformed
+        modificar();
+    }//GEN-LAST:event_jbModificarActionPerformed
+
+    private void jbBorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBorrarActionPerformed
+        eliminar();
+    }//GEN-LAST:event_jbBorrarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JButton jbBorrar;
+    private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbGuardar;
+    private javax.swing.JButton jbModificar;
+    private com.toedter.calendar.JDateChooser jdcDia;
+    private javax.swing.JRadioButton jrbEstado;
+    private javax.swing.JTable jtMenuDiario;
+    private javax.swing.JTextField jtfCalorias;
+    private javax.swing.JTextField jtfCodMenu;
     // End of variables declaration//GEN-END:variables
+
+    private void cargarDatos() {
+            
+        modelo.setRowCount(0);
+        List<MenuDiario> menus = menuDiarioData.obtenerTodosLosMenusDiarios();
+        
+        for (MenuDiario menu : menus) {
+            modelo.addRow(new Object[]{
+                menu.getCodMenu(),
+                menu.getDia(),
+                menu.getCaloriasDelMenu(),
+                menu.getEstado()
+            });
+        }
+    }
+    
+    private void limpiarCampos() {
+        jtfCodMenu.setText("");
+        jdcDia.setDate(null);
+        jtfCalorias.setText("");
+        jrbEstado.setSelected(false);
+    }
+    
+    private void guardar(){
+        try {
+            MenuDiario menu = new MenuDiario();
+            Date fechaSeleccionada = jdcDia.getDate(); 
+            
+            if (fechaSeleccionada == null) {
+                JOptionPane.showMessageDialog(this, "Seleccione un día válido.");
+                return;
+            }
+            menu.setDia(dateFormat.format(fechaSeleccionada)); // Formatea la fecha y guárdala en el objeto
+            
+            menu.setCaloriasDelMenu(Integer.parseInt(jtfCalorias.getText()));
+            menu.setEstado(jrbEstado.isSelected() ? "Activo" : "Inactivo");
+            menu.setCodDieta(Integer.parseInt(jtfCodMenu.getText()));
+
+            boolean exito = menuDiarioData.agregarMenuDiario(menu);
+            
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Menú diario guardado correctamente.");
+                cargarDatos();
+                limpiarCampos();
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al guardar el menú diario.");
+            }
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos en todos los campos.");
+        }
+    } 
+    
+    private void modificar(){
+        try {
+            MenuDiario menu = new MenuDiario();
+            menu.setCodMenu(Integer.parseInt(jtfCodMenu.getText()));
+            Date fechaSeleccionada = jdcDia.getDate();
+            
+            if (fechaSeleccionada == null) {
+                JOptionPane.showMessageDialog(this, "Seleccione un día válido.");
+                return;
+            }
+            
+            menu.setDia(dateFormat.format(fechaSeleccionada));
+            menu.setCaloriasDelMenu(Integer.parseInt(jtfCalorias.getText()));
+            menu.setEstado(jrbEstado.isSelected() ? "Activo" : "Inactivo");
+
+            boolean exito = menuDiarioData.actualizarMenuDiario(menu);
+            
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Menú diario modificado correctamente.");
+                cargarDatos();
+                limpiarCampos();
+                
+            } else {
+                   JOptionPane.showMessageDialog(this, "Error al modificar el menú diario.");
+            }
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese valores válidos en todos los campos.");
+        }
+    }                                         
+
+    private void eliminar(){
+        if (jtfCodMenu.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un código de menú válido para eliminar.");
+            return;
+        }
+
+        try {
+            int codMenu = Integer.parseInt(jtfCodMenu.getText());
+            boolean exito = menuDiarioData.eliminarMenuDiario(codMenu);
+            
+            if (exito) {
+                JOptionPane.showMessageDialog(this, "Menú diario eliminado correctamente.");
+                cargarDatos();
+                limpiarCampos();
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Error al eliminar el menú diario.");
+            }
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un código válido.");
+        }
+    }
+    
+    private void buscar(){
+        if (jtfCodMenu.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese un código de menú válido para buscar.");
+            return;
+        }
+
+        try {
+            int codMenu = Integer.parseInt(jtfCodMenu.getText());
+            MenuDiario menu = menuDiarioData.buscarMenuDiarioPorId(codMenu);
+            
+            if (menu != null) {
+                jdcDia.setDate(dateFormat.parse(menu.getDia()));
+                jtfCalorias.setText(String.valueOf(menu.getCaloriasDelMenu()));
+                jrbEstado.setSelected("Activo".equals(menu.getEstado()));
+                
+            } else {
+                JOptionPane.showMessageDialog(this, "Menú diario no encontrado.");
+                limpiarCampos();
+            }
+            
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un código válido.");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al cargar la fecha: " + e.getMessage());
+        }
+    }
+    
 }
