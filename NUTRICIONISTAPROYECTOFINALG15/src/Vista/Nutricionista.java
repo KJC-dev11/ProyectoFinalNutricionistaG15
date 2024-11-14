@@ -6,6 +6,7 @@
 package Vista;
 
 import Modelo.MenuDiario;
+import Vista.Paneles.VistaDieta;
 import Vista.Paneles.VistaInicio;
 import Vista.Paneles.VistaPaciente;
 import Vista.Paneles.VistaMenuDiario;
@@ -234,7 +235,9 @@ public class Nutricionista extends javax.swing.JFrame {
         );
 
         jpContenido.setBackground(new java.awt.Color(255, 255, 255));
-        jpContenido.setPreferredSize(new java.awt.Dimension(0, 600));
+        jpContenido.setMaximumSize(new java.awt.Dimension(740, 430));
+        jpContenido.setMinimumSize(new java.awt.Dimension(740, 430));
+        jpContenido.setPreferredSize(new java.awt.Dimension(740, 430));
 
         javax.swing.GroupLayout jpContenidoLayout = new javax.swing.GroupLayout(jpContenido);
         jpContenido.setLayout(jpContenidoLayout);
@@ -306,7 +309,14 @@ public class Nutricionista extends javax.swing.JFrame {
     }//GEN-LAST:event_jbRenglonActionPerformed
 
     private void jbMenuDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuDietaActionPerformed
-        // TODO add your handling code here:
+        VistaDieta p1 = new VistaDieta();
+        p1.setSize(750, 430);
+        p1.setLocation(0,0);
+
+        jpContenido.removeAll();
+        jpContenido.add(p1, BorderLayout.CENTER);
+        jpContenido.revalidate();
+        jpContenido.repaint();
     }//GEN-LAST:event_jbMenuDietaActionPerformed
 
     private void jbMenuDiarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuDiarioActionPerformed
