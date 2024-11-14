@@ -507,6 +507,7 @@ public class NewJInternalFrameAltaPaciente extends javax.swing.JInternalFrame {
         actualizarTabla(resultados);
     }
 }
+    
     private void cambiarEstadoPaciente() {
     int fila = tblPacientes.getSelectedRow();
     if (fila == -1) {
