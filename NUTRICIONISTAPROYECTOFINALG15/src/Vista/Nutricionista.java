@@ -11,6 +11,7 @@ import Vista.Paneles.VistaDieta;
 import Vista.Paneles.VistaInicio;
 import Vista.Paneles.VistaPaciente;
 import Vista.Paneles.VistaMenuDiario;
+import Vista.Paneles.VistaRenglon;
 import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialLighterIJTheme;
@@ -313,7 +314,14 @@ public class Nutricionista extends javax.swing.JFrame {
     }//GEN-LAST:event_jbMenuAlimentoActionPerformed
 
     private void jbRenglonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbRenglonActionPerformed
-        // TODO add your handling code here:
+        VistaRenglon p1 = new VistaRenglon();
+        p1.setSize(750, 430);
+        p1.setLocation(0,0);
+
+        jpContenido.removeAll();
+        jpContenido.add(p1, BorderLayout.CENTER);
+        jpContenido.revalidate();
+        jpContenido.repaint(); 
     }//GEN-LAST:event_jbRenglonActionPerformed
 
     private void jbMenuDietaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbMenuDietaActionPerformed
