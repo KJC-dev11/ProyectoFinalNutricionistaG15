@@ -125,7 +125,7 @@ public class VistaAlimento extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Código", "N. Comida", "Calorías", "Tipo", "Detalle"
+                "Código", "N° De Comida", "Calorías", "Tipo", "Detalle"
             }
         ));
         jScrollPane1.setViewportView(jtAlimento);
@@ -280,8 +280,6 @@ public class VistaAlimento extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbBusca;
-    private javax.swing.JButton jbBuscar;
-    private javax.swing.JButton jbBuscar1;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JComboBox<String> jcbTipo;
