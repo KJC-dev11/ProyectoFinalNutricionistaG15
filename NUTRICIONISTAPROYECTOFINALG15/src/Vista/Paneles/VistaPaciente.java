@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author FrancoPC
  */
-public class Paciente extends javax.swing.JPanel {
+public class VistaPaciente extends javax.swing.JPanel {
     
     private PacienteData pacienteData;
     private DefaultTableModel modelo;
@@ -24,7 +24,7 @@ public class Paciente extends javax.swing.JPanel {
     /**
      * Creates new form Paciente
      */
-    public Paciente() {
+    public VistaPaciente() {
         initComponents();
         pacienteData = new PacienteData();
         modelo = new DefaultTableModel();
