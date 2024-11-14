@@ -59,15 +59,17 @@ public class VistaMenuDiario extends javax.swing.JPanel {
 
         setMaximumSize(new java.awt.Dimension(750, 430));
         setMinimumSize(new java.awt.Dimension(750, 430));
+        setPreferredSize(new java.awt.Dimension(750, 430));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(750, 430));
         jPanel1.setMinimumSize(new java.awt.Dimension(750, 430));
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 430));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\MenuDiario2.png")); // NOI18N
-        jLabel1.setText("Menu Diario");
+        jLabel1.setText("MENU DIARIO");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -102,6 +104,7 @@ public class VistaMenuDiario extends javax.swing.JPanel {
         jrbEstado.setBackground(new java.awt.Color(255, 255, 255));
         jrbEstado.setForeground(new java.awt.Color(0, 0, 0));
 
+        jtMenuDiario.setBackground(new java.awt.Color(255, 255, 255));
         jtMenuDiario.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jtMenuDiario.setForeground(new java.awt.Color(0, 0, 0));
         jtMenuDiario.setModel(new javax.swing.table.DefaultTableModel(
@@ -232,7 +235,7 @@ public class VistaMenuDiario extends javax.swing.JPanel {
                         .addComponent(jbBorrar)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(16, 16, 16))))
         );

@@ -41,9 +41,9 @@ public class VistaInicio extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
 
-        setMaximumSize(new java.awt.Dimension(740, 430));
-        setMinimumSize(new java.awt.Dimension(740, 430));
-        setPreferredSize(new java.awt.Dimension(740, 430));
+        setMaximumSize(new java.awt.Dimension(750, 430));
+        setMinimumSize(new java.awt.Dimension(750, 430));
+        setPreferredSize(new java.awt.Dimension(750, 430));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(740, 430));
@@ -69,7 +69,7 @@ public class VistaInicio extends javax.swing.JPanel {
 
         jLabel5.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Además, el programa ofrece informes detallados para analizar el progreso, garantizando una visión completa de la evolución en el tiempo.");
+        jLabel5.setText("Además, el programa ofrece informes detallados para analizar el progreso, garantizando una visión completa de la ");
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -100,7 +100,7 @@ public class VistaInicio extends javax.swing.JPanel {
 
         jLabel12.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel12.setText("completa de la evolución en el tiempo.");
+        jLabel12.setText("evolución en el tiempo.");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -171,7 +171,7 @@ public class VistaInicio extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 750, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

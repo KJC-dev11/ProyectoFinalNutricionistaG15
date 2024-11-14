@@ -75,7 +75,7 @@ public class VistaDieta extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\dieta (1).png")); // NOI18N
-        jLabel1.setText("Dieta");
+        jLabel1.setText("DIETA");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
@@ -107,7 +107,7 @@ public class VistaDieta extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Peso Inicial", "Peso FInal", "Calorias Totales"
+                "ID", "Nombre", "Peso Inicial", "Peso Final", "Calorias Totales"
             }
         ) {
             boolean[] canEdit = new boolean [] {

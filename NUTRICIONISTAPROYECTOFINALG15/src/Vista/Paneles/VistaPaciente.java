@@ -68,10 +68,14 @@ public class VistaPaciente extends javax.swing.JPanel {
         jtPacientes = new javax.swing.JTable();
         jrbEstado = new javax.swing.JRadioButton();
 
-        setMaximumSize(new java.awt.Dimension(791, 430));
+        setMaximumSize(new java.awt.Dimension(750, 430));
         setMinimumSize(new java.awt.Dimension(750, 430));
+        setPreferredSize(new java.awt.Dimension(750, 430));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMaximumSize(new java.awt.Dimension(750, 430));
+        jPanel1.setMinimumSize(new java.awt.Dimension(750, 430));
+        jPanel1.setPreferredSize(new java.awt.Dimension(750, 430));
 
         jbGuardar.setBackground(new java.awt.Color(51, 153, 0));
         jbGuardar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\guardar.png")); // NOI18N
@@ -118,7 +122,7 @@ public class VistaPaciente extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\paciente.png")); // NOI18N
-        jLabel1.setText("Paciente");
+        jLabel1.setText("PACIENTE");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
