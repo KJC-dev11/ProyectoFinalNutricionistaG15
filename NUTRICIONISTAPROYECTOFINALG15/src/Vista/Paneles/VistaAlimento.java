@@ -109,7 +109,6 @@ public class VistaAlimento extends javax.swing.JPanel {
             }
         });
 
-        jtAlimento.setBackground(new java.awt.Color(204, 204, 204));
         jtAlimento.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jtAlimento.setForeground(new java.awt.Color(0, 0, 0));
         jtAlimento.setModel(new javax.swing.table.DefaultTableModel(
@@ -204,7 +203,7 @@ public class VistaAlimento extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jtfCodComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -225,7 +224,7 @@ public class VistaAlimento extends javax.swing.JPanel {
                             .addComponent(jLabel6)
                             .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jbBusca)
                         .addGap(18, 18, 18)
