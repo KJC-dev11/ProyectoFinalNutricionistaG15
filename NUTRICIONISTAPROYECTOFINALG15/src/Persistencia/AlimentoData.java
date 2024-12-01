@@ -64,12 +64,12 @@ public class AlimentoData {
         }
     }
          
-         public Alimentos buscarAlimento(int codComida) {
-        String sql = "SELECT * FROM alimentos WHERE codComida = ?";
+         public Alimentos buscarAlimento(String nombreComida) {
+        String sql = "SELECT * FROM alimentos WHERE nombreComida = ?";
         Alimentos alimento = null;
         try {
             PreparedStatement statement = con.prepareStatement(sql);
-            statement.setInt(1, codComida);
+            statement.setString(1, nombreComida);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 alimento = new Alimentos();
