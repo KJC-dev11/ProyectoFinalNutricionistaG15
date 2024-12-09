@@ -39,11 +39,13 @@ public class VistaRenglon extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jtfRenglon = new javax.swing.JTextField();
-        jcbComida = new javax.swing.JComboBox<>();
-        jtfCantidad = new javax.swing.JTextField();
+        jtfNombreReng = new javax.swing.JTextField();
+        jcbIng1 = new javax.swing.JComboBox<>();
+        jtfCantidadG = new javax.swing.JTextField();
         jtfTotalCal = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtRenglon = new javax.swing.JTable();
@@ -51,6 +53,14 @@ public class VistaRenglon extends javax.swing.JPanel {
         jbEditar = new javax.swing.JButton();
         jbGuardar = new javax.swing.JButton();
         jbBorrar = new javax.swing.JButton();
+        jcbIng2 = new javax.swing.JComboBox<>();
+        jcbIng3 = new javax.swing.JComboBox<>();
+        jbCalcSubTotal = new javax.swing.JButton();
+        jbNuevo2 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jtfNroRenglon = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jcbTipo = new javax.swing.JComboBox<>();
 
         setMaximumSize(new java.awt.Dimension(740, 430));
         setMinimumSize(new java.awt.Dimension(740, 430));
@@ -60,16 +70,23 @@ public class VistaRenglon extends javax.swing.JPanel {
         jPanel1.setMinimumSize(new java.awt.Dimension(740, 430));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("RENGLON MENU");
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel2.setText("N° De Renglon:");
+        jLabel2.setText("Nombre:");
 
         jLabel3.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel3.setText("Comida:");
+        jLabel3.setText("Ingrediente 1:");
+
+        jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel6.setText("Ingrediente 2:");
+
+        jLabel8.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel8.setText("Ingrediente 3:");
 
         jLabel4.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
@@ -79,52 +96,81 @@ public class VistaRenglon extends javax.swing.JPanel {
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Subtotal De Calorias:");
 
-        jtfRenglon.setBackground(new java.awt.Color(255, 255, 255));
-        jtfRenglon.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jtfRenglon.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombreReng.setBackground(new java.awt.Color(255, 255, 255));
+        jtfNombreReng.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtfNombreReng.setForeground(new java.awt.Color(0, 0, 0));
 
-        jcbComida.setBackground(new java.awt.Color(255, 255, 255));
-        jcbComida.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jcbComida.setForeground(new java.awt.Color(0, 0, 0));
+        jcbIng1.setBackground(new java.awt.Color(255, 255, 255));
+        jcbIng1.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jcbIng1.setForeground(new java.awt.Color(0, 0, 0));
+        jcbIng1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jtfCantidad.setBackground(new java.awt.Color(255, 255, 255));
-        jtfCantidad.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jtfCantidad.setForeground(new java.awt.Color(0, 0, 0));
+        jtfCantidadG.setBackground(new java.awt.Color(255, 255, 255));
+        jtfCantidadG.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtfCantidadG.setForeground(new java.awt.Color(0, 0, 0));
 
         jtfTotalCal.setBackground(new java.awt.Color(255, 255, 255));
         jtfTotalCal.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jtfTotalCal.setForeground(new java.awt.Color(0, 0, 0));
 
         jtRenglon.setBackground(new java.awt.Color(255, 255, 255));
+        jtRenglon.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jtRenglon.setForeground(new java.awt.Color(0, 0, 0));
         jtRenglon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "N° Renglon", "Comida", "Cantidad", "Subtotal Calorias"
+                "N°", "Nombre", "Ingr. 1", "Ingr. 2", "Ingr. 3", "Mg.", "Tot. Cal.", "Tipo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
+        jtRenglon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtRenglonMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtRenglon);
+        if (jtRenglon.getColumnModel().getColumnCount() > 0) {
+            jtRenglon.getColumnModel().getColumn(0).setMinWidth(30);
+            jtRenglon.getColumnModel().getColumn(0).setPreferredWidth(6);
+            jtRenglon.getColumnModel().getColumn(0).setMaxWidth(30);
+            jtRenglon.getColumnModel().getColumn(1).setMinWidth(120);
+            jtRenglon.getColumnModel().getColumn(1).setMaxWidth(120);
+            jtRenglon.getColumnModel().getColumn(2).setMinWidth(110);
+            jtRenglon.getColumnModel().getColumn(2).setMaxWidth(110);
+            jtRenglon.getColumnModel().getColumn(3).setMinWidth(110);
+            jtRenglon.getColumnModel().getColumn(3).setMaxWidth(110);
+            jtRenglon.getColumnModel().getColumn(4).setMinWidth(100);
+            jtRenglon.getColumnModel().getColumn(4).setMaxWidth(100);
+            jtRenglon.getColumnModel().getColumn(5).setMinWidth(40);
+            jtRenglon.getColumnModel().getColumn(5).setPreferredWidth(6);
+            jtRenglon.getColumnModel().getColumn(5).setMaxWidth(40);
+            jtRenglon.getColumnModel().getColumn(6).setMinWidth(50);
+            jtRenglon.getColumnModel().getColumn(6).setPreferredWidth(6);
+            jtRenglon.getColumnModel().getColumn(6).setMaxWidth(50);
+            jtRenglon.getColumnModel().getColumn(7).setMinWidth(80);
+            jtRenglon.getColumnModel().getColumn(7).setMaxWidth(80);
+        }
 
         jbBuscar.setBackground(new java.awt.Color(0, 153, 0));
         jbBuscar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\lupa.png")); // NOI18N
+        jbBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBuscarActionPerformed(evt);
@@ -133,6 +179,7 @@ public class VistaRenglon extends javax.swing.JPanel {
 
         jbEditar.setBackground(new java.awt.Color(51, 153, 0));
         jbEditar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\editar.png")); // NOI18N
+        jbEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbEditarActionPerformed(evt);
@@ -141,6 +188,7 @@ public class VistaRenglon extends javax.swing.JPanel {
 
         jbGuardar.setBackground(new java.awt.Color(51, 153, 0));
         jbGuardar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\guardar.png")); // NOI18N
+        jbGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbGuardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuardarActionPerformed(evt);
@@ -149,81 +197,159 @@ public class VistaRenglon extends javax.swing.JPanel {
 
         jbBorrar.setBackground(new java.awt.Color(51, 153, 0));
         jbBorrar.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\tacho.png")); // NOI18N
+        jbBorrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jbBorrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbBorrarActionPerformed(evt);
             }
         });
 
+        jcbIng2.setBackground(new java.awt.Color(255, 255, 255));
+        jcbIng2.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jcbIng2.setForeground(new java.awt.Color(0, 0, 0));
+        jcbIng2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jcbIng3.setBackground(new java.awt.Color(255, 255, 255));
+        jcbIng3.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jcbIng3.setForeground(new java.awt.Color(0, 0, 0));
+        jcbIng3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        jbCalcSubTotal.setText("Calcular");
+        jbCalcSubTotal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbCalcSubTotal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbCalcSubTotalActionPerformed(evt);
+            }
+        });
+
+        jbNuevo2.setBackground(new java.awt.Color(51, 153, 0));
+        jbNuevo2.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\nuevo.png")); // NOI18N
+        jbNuevo2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbNuevo2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbNuevo2ActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel7.setText("Número:");
+
+        jtfNroRenglon.setBackground(new java.awt.Color(255, 255, 255));
+        jtfNroRenglon.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtfNroRenglon.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel9.setText("Tipo:");
+
+        jcbTipo.setBackground(new java.awt.Color(255, 255, 255));
+        jcbTipo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jcbTipo.setForeground(new java.awt.Color(0, 0, 0));
+        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Desayuno", "Almuerzo", "Merienda", "Cena" }));
+        jcbTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(313, Short.MAX_VALUE)
-                        .addComponent(jLabel1)
-                        .addGap(126, 126, 126))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel5))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel9))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jcbIng1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jcbIng3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jcbIng2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jtfNombreReng)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jtfTotalCal, javax.swing.GroupLayout.DEFAULT_SIZE, 220, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jtfCantidad)
-                                    .addComponent(jtfRenglon, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jcbComida, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jtfTotalCal, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jbCalcSubTotal))
+                            .addComponent(jtfCantidadG)
+                            .addComponent(jtfNroRenglon, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                            .addComponent(jcbTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel1)
+                        .addGap(0, 97, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 655, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jbBorrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbGuardar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbEditar))
-                    .addComponent(jbBuscar))
-                .addGap(69, 69, 69))
+                        .addComponent(jbGuardar))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jbEditar)
+                        .addComponent(jbBuscar)
+                        .addComponent(jbNuevo2)))
+                .addGap(44, 44, 44))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jbBuscar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbEditar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbNuevo2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbGuardar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbBorrar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 18, Short.MAX_VALUE)
-                        .addComponent(jbBuscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbEditar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbGuardar)
-                        .addGap(18, 18, 18)
-                        .addComponent(jbBorrar))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(40, 40, 40)
+                        .addContainerGap(52, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jtfNroRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jtfRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtfNombreReng, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3)
-                            .addComponent(jcbComida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jcbIng1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jcbIng2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jcbIng3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
-                            .addComponent(jtfCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtfCantidadG, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
-                            .addComponent(jtfTotalCal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(38, 38, 38))
+                            .addComponent(jtfTotalCal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jbCalcSubTotal))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -254,6 +380,29 @@ public class VistaRenglon extends javax.swing.JPanel {
             eliminarRenglon();
     }//GEN-LAST:event_jbBorrarActionPerformed
 
+    private void jtRenglonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtRenglonMouseClicked
+        if (evt.getClickCount()==2) {
+            int renglon = jtRenglon.getSelectedRow();
+            
+            jtfNroRenglon.setText(jtRenglon.getValueAt(renglon, 0).toString());
+            jtfNombreReng.setText(jtRenglon.getValueAt(renglon, 1).toString());
+            jcbIng1.setSelectedItem(jtRenglon.getValueAt(renglon, 2).toString());
+            jcbIng2.setSelectedItem(jtRenglon.getValueAt(renglon, 3).toString());
+            jcbIng3.setSelectedItem(jtRenglon.getValueAt(renglon, 4).toString());
+            jtfCantidadG.setText(jtRenglon.getValueAt(renglon, 5).toString());
+            jtfTotalCal.setText(jtRenglon.getValueAt(renglon, 6).toString());
+            jcbTipo.setSelectedItem(jtRenglon.getValueAt(renglon, 7));
+        }
+    }//GEN-LAST:event_jtRenglonMouseClicked
+
+    private void jbCalcSubTotalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbCalcSubTotalActionPerformed
+        calcularSubCalorias();
+    }//GEN-LAST:event_jbCalcSubTotalActionPerformed
+
+    private void jbNuevo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevo2ActionPerformed
+        limpiar();
+    }//GEN-LAST:event_jbNuevo2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
@@ -261,22 +410,33 @@ public class VistaRenglon extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbBorrar;
     private javax.swing.JButton jbBuscar;
+    private javax.swing.JButton jbCalcSubTotal;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbGuardar;
-    private javax.swing.JComboBox<String> jcbComida;
+    private javax.swing.JButton jbNuevo2;
+    private javax.swing.JComboBox<String> jcbIng1;
+    private javax.swing.JComboBox<String> jcbIng2;
+    private javax.swing.JComboBox<String> jcbIng3;
+    private javax.swing.JComboBox<String> jcbTipo;
     private javax.swing.JTable jtRenglon;
-    private javax.swing.JTextField jtfCantidad;
-    private javax.swing.JTextField jtfRenglon;
+    private javax.swing.JTextField jtfCantidadG;
+    private javax.swing.JTextField jtfNombreReng;
+    private javax.swing.JTextField jtfNroRenglon;
     private javax.swing.JTextField jtfTotalCal;
     // End of variables declaration//GEN-END:variables
 
     private void agregarOyentes() {
         
-        jtfCantidad.addFocusListener(new java.awt.event.FocusAdapter() {
+        jtfCantidadG.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
             public void focusLost(java.awt.event.FocusEvent evt) {
                 calcularSubCalorias();
             }
@@ -287,10 +447,14 @@ public class VistaRenglon extends javax.swing.JPanel {
         
         List<String> comidas = renglonMenuData.obtenerNombresComidas();
         
-        jcbComida.removeAllItems();
+        jcbIng1.removeAllItems();
+        jcbIng2.removeAllItems();
+        jcbIng3.removeAllItems();
         
         for (String comida : comidas) {
-            jcbComida.addItem(comida);
+            jcbIng1.addItem(comida);
+            jcbIng2.addItem(comida);
+            jcbIng3.addItem(comida);
         }
     }
     
@@ -298,13 +462,20 @@ public class VistaRenglon extends javax.swing.JPanel {
         List<RenglonMenu> renglones = renglonMenuData.obtenerTodosLosRenglones();
         DefaultTableModel model = (DefaultTableModel) jtRenglon.getModel();
         model.setRowCount(0);
+        
+        
 
         for (RenglonMenu renglon : renglones) {
+            
             model.addRow(new Object[]{
-                renglon.getCodMenu(),
-                renglon.getCodComida(),
-                renglon.getCantidadGramos(),
-                renglon.getSubtotalCalorias()
+                        renglon.getNroRenglon(),
+                        renglon.getNombreRenglon(),
+                        renglon.getNomComida1(),
+                        renglon.getNomComida2(),
+                        renglon.getNomComida3(),
+                        renglon.getCantidadGramos(),
+                        renglon.getSubtotalCalorias(),
+                        renglon.getTipo()
             });
         }
     }
@@ -312,8 +483,8 @@ public class VistaRenglon extends javax.swing.JPanel {
     private void calcularSubCalorias() {
         
         try {
-            String alimento = jcbComida.getSelectedItem().toString();
-            double cantidad = Double.parseDouble(jtfCantidad.getText().trim());
+            String alimento = jcbIng1.getSelectedItem().toString();
+            double cantidad = Double.parseDouble(jtfCantidadG.getText().trim());
             int caloriasPorPorcion = obtenerCaloriasPorPorcion(alimento);
             int subtotalCalorias = (int)(cantidad * caloriasPorPorcion);
             jtfTotalCal.setText(String.valueOf(subtotalCalorias));
@@ -325,26 +496,18 @@ public class VistaRenglon extends javax.swing.JPanel {
     
     private void guardarRenglon() {
         
+        if (jtfCantidadG.getText().trim().isEmpty()) {
+    JOptionPane.showMessageDialog(this, "El campo de cantidad está vacío.", "Error", JOptionPane.ERROR_MESSAGE);
+    return;
+}
+
+        
         try {
-            int codMenu = Integer.parseInt(jtfRenglon.getText().trim());
-            String nombreComida = (String) jcbComida.getSelectedItem();
             
-            if (nombreComida == null || nombreComida.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Seleccione una comida válida.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            int codComida = renglonMenuData.obtenerCodigoComidaPorNombre(nombreComida);
-            
-            if (codComida == -1) {
-                JOptionPane.showMessageDialog(this, "No se encontró el código de la comida seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-
-            double cantidad;
+            int cantidad;
             
             try {
-                cantidad = Double.parseDouble(jtfCantidad.getText().trim());
+                cantidad = Integer.parseInt(jtfCantidadG.getText().trim());
                 
                 if (cantidad <= 0) {
                     JOptionPane.showMessageDialog(this, "La cantidad debe ser un número positivo.", "Error", JOptionPane.ERROR_MESSAGE);
@@ -369,8 +532,15 @@ public class VistaRenglon extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Ingrese un subtotal de calorías válido.", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
+            
+            int nroRenglon = Integer.parseInt(jtfNroRenglon.getText());
+            String nombreReng = jtfNombreReng.getText();
+            String nomCom1 = jcbIng1.getSelectedItem().toString();
+            String nomCom2 = jcbIng2.getSelectedItem().toString();
+            String nomCom3 = jcbIng3.getSelectedItem().toString();
+            String tipo = jcbTipo.getSelectedItem().toString();
 
-            RenglonMenu renglonMenu = new RenglonMenu(codMenu, codComida, cantidad, subtotalCalorias);
+            RenglonMenu renglonMenu = new RenglonMenu(nroRenglon, nombreReng, subtotalCalorias, cantidad, nomCom1, nomCom2, nomCom3, tipo);
             
             try {
                 renglonMenuData.agregarRenglonMenu(renglonMenu);
@@ -387,16 +557,29 @@ public class VistaRenglon extends javax.swing.JPanel {
     }
     
     private void buscarRenglon() {
+
         try {
             
-            int nroRenglon = Integer.parseInt(jtfRenglon.getText().trim());
+            String nomRenglon = jtfNombreReng.getText();
             
-            RenglonMenu renglonMenu = renglonMenuData.buscarRenglonPorNumero(nroRenglon);
+            List<RenglonMenu> renglones = renglonMenuData.buscarRenglonPorNombre(nomRenglon);
+            DefaultTableModel model = (DefaultTableModel) jtRenglon.getModel();
+            model.setRowCount(0);
 
-            if (renglonMenu != null) {
-                jcbComida.setSelectedItem(renglonMenu.getCodComida());
-                jtfCantidad.setText(String.valueOf(renglonMenu.getCantidadGramos()));
-                jtfTotalCal.setText(String.valueOf(renglonMenu.getSubtotalCalorias()));
+            if (!(renglones.isEmpty())) {
+                for (RenglonMenu renglon : renglones) {
+            
+                    model.addRow(new Object[]{
+                        renglon.getNroRenglon(),
+                        renglon.getNombreRenglon(),
+                        renglon.getNomComida1(),
+                        renglon.getNomComida2(),
+                        renglon.getNomComida3(),
+                        renglon.getCantidadGramos(),
+                        renglon.getSubtotalCalorias(),
+                        renglon.getTipo()
+                    });}
+                
             } else {
                 JOptionPane.showMessageDialog(this, "Renglón no encontrado.");
             }
@@ -408,20 +591,24 @@ public class VistaRenglon extends javax.swing.JPanel {
     
     private void modificarRenglon() {
         try {
-            int nroRenglon = Integer.parseInt(jtfRenglon.getText().trim());
-            String nombreComida = jcbComida.getSelectedItem().toString();
-            int codComida = renglonMenuData.obtenerCodigoComidaPorNombre(nombreComida);
-            double cantidad = Double.parseDouble(jtfCantidad.getText().trim());
+            
+            int nroRenglon = Integer.parseInt(jtfNroRenglon.getText());
+            String nombreRenglon = jtfNombreReng.getText();
+            String nombreComida1 = jcbIng1.getSelectedItem().toString();
+            String nombreComida2 = jcbIng2.getSelectedItem().toString();
+            String nombreComida3 = jcbIng3.getSelectedItem().toString();      
+            int cantidadG = Integer.parseInt(jtfCantidadG.getText().trim());
             int subCalorias = Integer.parseInt(jtfTotalCal.getText().trim());
+            String tipo = jcbTipo.getSelectedItem().toString();
 
-            if (codComida != -1) {
-                RenglonMenu renglonMenu = new RenglonMenu(nroRenglon, codComida, cantidad, subCalorias);
+            if (!(nombreRenglon.isEmpty())) {
+                RenglonMenu renglonMenu = new RenglonMenu(nroRenglon, nombreRenglon, subCalorias, cantidadG, nombreComida1, nombreComida2, nombreComida3, tipo);
                 renglonMenuData.actualizarRenglonMenu(renglonMenu);
                 actualizarTabla();
                 JOptionPane.showMessageDialog(this, "Renglón modificado correctamente.");
                 
             } else {
-                JOptionPane.showMessageDialog(this, "No se encontró el código de la comida seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "No se encontró el código del renglon seleccionada.", "Error", JOptionPane.ERROR_MESSAGE);
             }
             
         } catch (NumberFormatException e) {
@@ -432,17 +619,33 @@ public class VistaRenglon extends javax.swing.JPanel {
     private void eliminarRenglon() {
         try {
             
-            int nroRenglon = Integer.parseInt(jtfRenglon.getText().trim());
-            renglonMenuData.eliminarRenglonMenu(nroRenglon);
+            String nombreRenglon = jtfNombreReng.getText();
+            renglonMenuData.eliminarRenglonMenu(nombreRenglon);
             actualizarTabla();
             JOptionPane.showMessageDialog(this, "Renglón eliminado correctamente.");
             
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Ingrese un número de renglón válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Ingrese un nombre de renglón válido.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     private int obtenerCaloriasPorPorcion(String alimento) {
         return renglonMenuData.obtenerCaloriasPorComida(alimento);
+    }
+    
+    public int calcularSubtotalCalorias(int caloriasPorPorcion) {
+        return (Integer.parseInt(jtfCantidadG.getText()) * caloriasPorPorcion / 100);
+    }
+    
+    public void limpiar(){
+    
+        jtfNroRenglon.setText("");
+        jtfNombreReng.setText("");
+        jcbIng1.setSelectedIndex(0);
+        jcbIng2.setSelectedIndex(0);
+        jcbIng3.setSelectedIndex(0);
+        jtfCantidadG.setText("");
+        jtfTotalCal.setText("");
+        jcbTipo.setSelectedIndex(0);
     }
 }

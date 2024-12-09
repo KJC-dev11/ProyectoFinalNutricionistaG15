@@ -7,6 +7,7 @@ package Vista;
 
 import Modelo.Alimentos;
 import Persistencia.AlimentoData;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -82,25 +83,57 @@ public class VistaAlimento extends javax.swing.JPanel {
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Tipo:");
 
+        jtfCodComida.setBackground(null);
         jtfCodComida.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtfCodComida.setForeground(new java.awt.Color(0, 0, 0));
 
+        jtfNombre.setBackground(null);
         jtfNombre.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtfNombre.setForeground(new java.awt.Color(0, 0, 0));
+        jtfNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfNombreKeyTyped(evt);
+            }
+        });
 
+        jtfCalorias.setBackground(null);
         jtfCalorias.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtfCalorias.setForeground(new java.awt.Color(0, 0, 0));
 
+        jtfDetalle.setBackground(null);
         jtfDetalle.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtfDetalle.setForeground(new java.awt.Color(0, 0, 0));
+        jtfDetalle.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfDetalleKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtfDetalleKeyTyped(evt);
+            }
+        });
 
+        jcbTipo.setBackground(null);
         jcbTipo.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
-        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desayuno", "Almuerzo", "Merienda", "Cena" }));
-        jcbTipo.setSelectedIndex(-1);
+        jcbTipo.setForeground(new java.awt.Color(0, 0, 0));
+        jcbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Común", "Sin TACC", "Deslactosada" }));
         jcbTipo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jcbTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jcbTipoItemStateChanged(evt);
+            }
+        });
         jcbTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcbTipoActionPerformed(evt);
             }
         });
 
+        jtAlimento.setBackground(null);
         jtAlimento.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtAlimento.setForeground(new java.awt.Color(0, 0, 0));
         jtAlimento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -136,11 +169,23 @@ public class VistaAlimento extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        jtAlimento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtAlimentoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtAlimento);
         if (jtAlimento.getColumnModel().getColumnCount() > 0) {
+            jtAlimento.getColumnModel().getColumn(0).setMinWidth(50);
             jtAlimento.getColumnModel().getColumn(0).setMaxWidth(50);
+            jtAlimento.getColumnModel().getColumn(1).setMinWidth(130);
+            jtAlimento.getColumnModel().getColumn(1).setMaxWidth(130);
+            jtAlimento.getColumnModel().getColumn(2).setMinWidth(60);
             jtAlimento.getColumnModel().getColumn(2).setMaxWidth(60);
+            jtAlimento.getColumnModel().getColumn(3).setMinWidth(70);
             jtAlimento.getColumnModel().getColumn(3).setMaxWidth(70);
+            jtAlimento.getColumnModel().getColumn(4).setMinWidth(290);
+            jtAlimento.getColumnModel().getColumn(4).setMaxWidth(290);
         }
 
         jbEditar.setBackground(new java.awt.Color(51, 153, 0));
@@ -212,7 +257,7 @@ public class VistaAlimento extends javax.swing.JPanel {
                             .addComponent(jtfCalorias)
                             .addComponent(jtfDetalle, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jcbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -221,7 +266,7 @@ public class VistaAlimento extends javax.swing.JPanel {
                     .addComponent(jbBusca)
                     .addComponent(jbNuevo2)
                     .addComponent(jbBorrar))
-                .addGap(282, 282, 282))
+                .addGap(102, 102, 102))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -268,7 +313,7 @@ public class VistaAlimento extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 729, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 729, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -293,12 +338,52 @@ public class VistaAlimento extends javax.swing.JPanel {
     }//GEN-LAST:event_jbBorrarActionPerformed
 
     private void jbBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuscaActionPerformed
-        buscar();
+        if (!(jtfNombre.getText().isEmpty())&&jtfCodComida.getText().isEmpty()&&jtfCalorias.getText().isEmpty()&&jtfDetalle.getText().isEmpty()&&jcbTipo.getSelectedIndex()==0) {
+            buscarNombre();
+            
+        } else if (jtfNombre.getText().isEmpty()&&jtfCodComida.getText().isEmpty()&&jtfCalorias.getText().isEmpty()&&!(jtfDetalle.getText().isEmpty())&&jcbTipo.getSelectedIndex()==0) {
+            buscarDetalle();
+            
+        } else if (jtfNombre.getText().isEmpty()&&jtfCodComida.getText().isEmpty()&&jtfCalorias.getText().isEmpty()&&jtfDetalle.getText().isEmpty()&&!(jcbTipo.getSelectedIndex()==0)){
+            buscarTipo();
+        }
     }//GEN-LAST:event_jbBuscaActionPerformed
 
     private void jbNuevo2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbNuevo2ActionPerformed
         limpiar();
     }//GEN-LAST:event_jbNuevo2ActionPerformed
+
+    private void jtAlimentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtAlimentoMouseClicked
+        if (evt.getClickCount()==2) {
+            int alimento = jtAlimento.getSelectedRow();
+            
+            jtfCodComida.setText(jtAlimento.getValueAt(alimento, 0).toString());
+            jtfNombre.setText(jtAlimento.getValueAt(alimento, 1).toString());
+            jtfCalorias.setText(jtAlimento.getValueAt(alimento, 2).toString());
+            jcbTipo.setSelectedItem(jtAlimento.getValueAt(alimento, 3).toString());
+            jtfDetalle.setText(jtAlimento.getValueAt(alimento, 4).toString());
+        }
+    }//GEN-LAST:event_jtAlimentoMouseClicked
+
+    private void jtfNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyTyped
+        
+    }//GEN-LAST:event_jtfNombreKeyTyped
+
+    private void jtfDetalleKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDetalleKeyTyped
+        
+    }//GEN-LAST:event_jtfDetalleKeyTyped
+
+    private void jtfDetalleKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfDetalleKeyPressed
+        
+    }//GEN-LAST:event_jtfDetalleKeyPressed
+
+    private void jtfNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfNombreKeyPressed
+        
+    }//GEN-LAST:event_jtfNombreKeyPressed
+
+    private void jcbTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jcbTipoItemStateChanged
+
+    }//GEN-LAST:event_jcbTipoItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -314,8 +399,6 @@ public class VistaAlimento extends javax.swing.JPanel {
     private javax.swing.JButton jbBusca;
     private javax.swing.JButton jbEditar;
     private javax.swing.JButton jbGuardar;
-    private javax.swing.JButton jbNuevo;
-    private javax.swing.JButton jbNuevo1;
     private javax.swing.JButton jbNuevo2;
     private javax.swing.JComboBox<String> jcbTipo;
     private javax.swing.JTable jtAlimento;
@@ -325,34 +408,97 @@ public class VistaAlimento extends javax.swing.JPanel {
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void buscar(){
+    private void buscarNombre(){
         try {
             String nombreComida = jtfNombre.getText();
-            Alimentos alimento = alimentoData.buscarAlimento(nombreComida);
+            List<Alimentos> alimento = alimentoData.buscarAlimentoPorNombre(nombreComida);
             
             
-            if (alimento != null) {
-                jtfCodComida.setText(alimento.getCodComida() + "");
-                jtfNombre.setText(alimento.getNombreComida());
-                jtfCalorias.setText(String.valueOf(alimento.getCaloriasPorPorcion()));
-                jcbTipo.setSelectedItem(alimento.getStipoComida());
-                jtfDetalle.setText(alimento.getDetalle());
-                
-                DefaultTableModel model = (DefaultTableModel) jtAlimento.getModel();
-                model.setRowCount(0);
+            
+            DefaultTableModel model = (DefaultTableModel) jtAlimento.getModel();
+            model.setRowCount(0);
+            
+            for (Alimentos alimentos : alimento) {
                 
                 model.addRow(new Object[]{
-                alimento.getCodComida(),
-                alimento.getNombreComida(),
-                alimento.getCaloriasPorPorcion(),
-                alimento.getStipoComida(),
-                alimento.getDetalle()
-            });
-        
-            } else {
-                JOptionPane.showMessageDialog(this, "Alimento no encontrado.");
+                    
+                alimentos.getCodComida(),
+                alimentos.getNombreComida(),
+                alimentos.getCaloriasPorPorcion(),
+                alimentos.getStipoComida(),
+                alimentos.getDetalle()
+                });
             }
-        } catch (NumberFormatException e) {
+            
+            if (alimento.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron alimentos.");
+                
+            }
+            
+         } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Código no válido.");
+        }
+  }
+    
+        private void buscarDetalle(){
+        try {
+            String detalleComida = jtfDetalle.getText();
+            List<Alimentos> alimento = alimentoData.buscarAlimentoPorDetalle(detalleComida);
+                       
+            DefaultTableModel model = (DefaultTableModel) jtAlimento.getModel();
+            model.setRowCount(0);
+            
+            for (Alimentos alimentos : alimento) {
+                
+                model.addRow(new Object[]{
+                    
+                alimentos.getCodComida(),
+                alimentos.getNombreComida(),
+                alimentos.getCaloriasPorPorcion(),
+                alimentos.getStipoComida(),
+                alimentos.getDetalle()
+                });
+            }
+            
+             
+            if (alimento.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron alimentos.");
+                
+            }
+            
+         } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Código no válido.");
+        }
+    }
+        
+            private void buscarTipo(){
+        try {
+            String tipoComida = jcbTipo.getSelectedItem().toString();
+            List<Alimentos> alimento = alimentoData.buscarAlimentoPorTipo(tipoComida);
+            
+           
+            
+            DefaultTableModel model = (DefaultTableModel) jtAlimento.getModel();
+            model.setRowCount(0);
+            
+            for (Alimentos alimentos : alimento) {
+                
+                model.addRow(new Object[]{
+                    
+                alimentos.getCodComida(),
+                alimentos.getNombreComida(),
+                alimentos.getCaloriasPorPorcion(),
+                alimentos.getStipoComida(),
+                alimentos.getDetalle()
+                });
+            }
+            
+             if (alimento.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No se encontraron alimentos.");
+                
+            }
+            
+         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Código no válido.");
         }
     }
@@ -363,7 +509,7 @@ public class VistaAlimento extends javax.swing.JPanel {
         jtfNombre.setText("");
         jtfDetalle.setText("");
         jtfCalorias.setText("");
-        jcbTipo.setSelectedIndex(-1);
+        jcbTipo.setSelectedIndex(0);
     }
     
     

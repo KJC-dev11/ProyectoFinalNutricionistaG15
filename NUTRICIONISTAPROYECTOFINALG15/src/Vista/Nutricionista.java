@@ -69,9 +69,9 @@ public class Nutricionista extends javax.swing.JFrame {
         jbMenuPaciente = new javax.swing.JButton();
         jbMenuAlimento = new javax.swing.JButton();
         jbInicio = new javax.swing.JButton();
-        jbRenglon = new javax.swing.JButton();
         jbMenuDieta = new javax.swing.JButton();
         jbMenuDiario = new javax.swing.JButton();
+        jbRenglon = new javax.swing.JButton();
         jpHeader = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -80,7 +80,6 @@ public class Nutricionista extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1000, 700));
-        setPreferredSize(new java.awt.Dimension(1000, 700));
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -97,7 +96,6 @@ public class Nutricionista extends javax.swing.JFrame {
 
         jbMenuPaciente.setBackground(new java.awt.Color(0, 204, 0));
         jbMenuPaciente.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jbMenuPaciente.setForeground(new java.awt.Color(0, 0, 0));
         jbMenuPaciente.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\MenuAltaPaciente.png")); // NOI18N
         jbMenuPaciente.setText(" Paciente");
         jbMenuPaciente.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -112,7 +110,6 @@ public class Nutricionista extends javax.swing.JFrame {
 
         jbMenuAlimento.setBackground(new java.awt.Color(0, 204, 0));
         jbMenuAlimento.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jbMenuAlimento.setForeground(new java.awt.Color(0, 0, 0));
         jbMenuAlimento.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\MenuAltaAlimento.png")); // NOI18N
         jbMenuAlimento.setText(" Alimento");
         jbMenuAlimento.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -127,7 +124,6 @@ public class Nutricionista extends javax.swing.JFrame {
 
         jbInicio.setBackground(new java.awt.Color(0, 204, 0));
         jbInicio.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jbInicio.setForeground(new java.awt.Color(0, 0, 0));
         jbInicio.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\Inicio.png")); // NOI18N
         jbInicio.setText(" Inicio");
         jbInicio.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -140,24 +136,8 @@ public class Nutricionista extends javax.swing.JFrame {
             }
         });
 
-        jbRenglon.setBackground(new java.awt.Color(0, 204, 0));
-        jbRenglon.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jbRenglon.setForeground(new java.awt.Color(0, 0, 0));
-        jbRenglon.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\MenuDiario.png")); // NOI18N
-        jbRenglon.setText(" Renglon");
-        jbRenglon.setBorder(new javax.swing.border.MatteBorder(null));
-        jbRenglon.setBorderPainted(false);
-        jbRenglon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbRenglon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jbRenglon.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbRenglonActionPerformed(evt);
-            }
-        });
-
         jbMenuDieta.setBackground(new java.awt.Color(0, 204, 0));
         jbMenuDieta.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jbMenuDieta.setForeground(new java.awt.Color(0, 0, 0));
         jbMenuDieta.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\MenuAltaDieta.png")); // NOI18N
         jbMenuDieta.setText(" Dieta");
         jbMenuDieta.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 10, 1, 1, new java.awt.Color(0, 0, 0)));
@@ -172,7 +152,6 @@ public class Nutricionista extends javax.swing.JFrame {
 
         jbMenuDiario.setBackground(new java.awt.Color(0, 204, 0));
         jbMenuDiario.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jbMenuDiario.setForeground(new java.awt.Color(0, 0, 0));
         jbMenuDiario.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\MenuDiario.png")); // NOI18N
         jbMenuDiario.setText(" Menu Diario");
         jbMenuDiario.setBorder(new javax.swing.border.MatteBorder(null));
@@ -185,20 +164,37 @@ public class Nutricionista extends javax.swing.JFrame {
             }
         });
 
+        jbRenglon.setBackground(new java.awt.Color(0, 204, 0));
+        jbRenglon.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
+        jbRenglon.setIcon(new javax.swing.ImageIcon("D:\\Franco\\ULP\\02. Materias\\1°Año\\2°Cuatrimestre\\Lab. de Programación\\6-Proyecto Final\\Proyect_Final\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\--PROYECTO-de-la-REALIDAD--NUTRICIONISTA\\NUTRICIONISTAPROYECTOFINALG15\\src\\imagenes\\MenuDiario.png")); // NOI18N
+        jbRenglon.setText(" Renglon");
+        jbRenglon.setBorder(new javax.swing.border.MatteBorder(null));
+        jbRenglon.setBorderPainted(false);
+        jbRenglon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbRenglon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jbRenglon.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbRenglonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jpMenuLayout = new javax.swing.GroupLayout(jpMenu);
         jpMenu.setLayout(jpMenuLayout);
         jpMenuLayout.setHorizontalGroup(
             jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpMenuLayout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jlTitulo))
-            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jbInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jbMenuPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jbMenuAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jbMenuDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jbMenuDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(jbRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpMenuLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(jlTitulo))
+                    .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMenuPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMenuAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMenuDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbMenuDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12))
         );
         jpMenuLayout.setVerticalGroup(
             jpMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,14 +207,15 @@ public class Nutricionista extends javax.swing.JFrame {
                 .addComponent(jbInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15)
                 .addComponent(jbMenuPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addComponent(jbMenuAlimento, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jbMenuDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
+                .addComponent(jbRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jbMenuDiario, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jbRenglon, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jbMenuDieta, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jpHeader.setBackground(new java.awt.Color(0, 255, 51));
@@ -226,7 +223,6 @@ public class Nutricionista extends javax.swing.JFrame {
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Century Gothic", 1, 50)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Bienvenido!");
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 3, 18)); // NOI18N
@@ -255,15 +251,13 @@ public class Nutricionista extends javax.swing.JFrame {
         );
 
         jpContenido.setBackground(new java.awt.Color(255, 255, 255));
-        jpContenido.setMaximumSize(new java.awt.Dimension(740, 430));
-        jpContenido.setMinimumSize(new java.awt.Dimension(740, 430));
         jpContenido.setPreferredSize(new java.awt.Dimension(740, 430));
 
         javax.swing.GroupLayout jpContenidoLayout = new javax.swing.GroupLayout(jpContenido);
         jpContenido.setLayout(jpContenidoLayout);
         jpContenidoLayout.setHorizontalGroup(
             jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 1686, Short.MAX_VALUE)
         );
         jpContenidoLayout.setVerticalGroup(
             jpContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,10 +281,10 @@ public class Nutricionista extends javax.swing.JFrame {
                                 .addGap(30, 30, 30)
                                 .addComponent(jlFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 1640, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jpHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 1680, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
+                        .addContainerGap(10, Short.MAX_VALUE))
                     .addGroup(BackgroundLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jpContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 1680, Short.MAX_VALUE))))
+                        .addComponent(jpContenido, javax.swing.GroupLayout.DEFAULT_SIZE, 1686, Short.MAX_VALUE))))
         );
         BackgroundLayout.setVerticalGroup(
             BackgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

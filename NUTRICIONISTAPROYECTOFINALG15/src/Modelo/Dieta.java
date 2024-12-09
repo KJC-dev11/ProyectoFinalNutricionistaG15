@@ -5,63 +5,53 @@
  */
 package Modelo;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+
 
 public class Dieta {
     private int codDieta;
-    private String nombreD;
-    private List<MenuDiario> listMenuDiario;
-    private Date fechaIni;
-    private Date fechaFin;
-    private float pesoInicial;
-    private float pesoFinal;
-    private boolean estado;
+    private String nombreDieta;
+    private String lunes;
+    private String martes;
+    private String miercoles;
+    private String jueves;
+    private String viernes;
+    private Date fInicio;
+    private Date fFin;
+    private String nombrePaciente;
     private int totalCalorias;
-    private Paciente paciente;
-    private int idPaciente;
+    private boolean estado;
     
     public Dieta(){
     }
 
-public Dieta(String nombreD, Date fechaIni, Date fechaFin, float pesoInicial, float pesoFinal, int totalCalorias, boolean estado) {
-    this.nombreD = nombreD;
-    this.fechaIni = fechaIni;
-    this.fechaFin = fechaFin;
-    this.pesoInicial = pesoInicial;
-    this.pesoFinal = pesoFinal;
-    this.totalCalorias = totalCalorias;
-    this.estado = estado;
-    this.listMenuDiario = new ArrayList<>();
-}
-
-
-    public Dieta(String nombreD, List<MenuDiario> listMenuDiario, Date fechaIni, Date fechaFin, float pesoInicial, float pesoFinal, boolean estado, int totalCalorias, Paciente paciente, int idPaciente) {
-        this.nombreD = nombreD;
-        this.listMenuDiario =  new ArrayList<>();
-        this.fechaIni = fechaIni;
-        this.fechaFin = fechaFin;
-        this.pesoInicial = pesoInicial;
-        this.pesoFinal = pesoFinal;
-        this.estado = estado;
+    public Dieta(int codDieta, String nombreDieta, String lunes, String martes, String miercoles, String jueves, String viernes, Date fInicio, Date fFin, String nombrePaciente, int totalCalorias, boolean estado) {
+        this.codDieta = codDieta;
+        this.nombreDieta = nombreDieta;
+        this.lunes = lunes;
+        this.martes = martes;
+        this.miercoles = miercoles;
+        this.jueves = jueves;
+        this.viernes = viernes;
+        this.fInicio = fInicio;
+        this.fFin = fFin;
+        this.nombrePaciente = nombrePaciente;
         this.totalCalorias = totalCalorias;
-        this.paciente = paciente;
-        this.idPaciente = idPaciente;
+        this.estado = estado;
     }
 
-    public Dieta(int codDieta, String nombreD, List<MenuDiario> listMenuDiario, Date fechaIni, Date fechaFin, float pesoInicial, float pesoFinal, boolean estado, int totalCalorias, Paciente paciente, int idPaciente) {
-        this.codDieta = codDieta;
-        this.nombreD = nombreD;
-        this.listMenuDiario =  new ArrayList<>();
-        this.fechaIni = fechaIni;
-        this.fechaFin = fechaFin;
-        this.pesoInicial = pesoInicial;
-        this.pesoFinal = pesoFinal;
-        this.estado = estado;
+    public Dieta(String nombreDieta, String lunes, String martes, String miercoles, String jueves, String viernes, Date fInicio, Date fFin, String nombrePaciente, int totalCalorias, boolean estado) {
+        this.nombreDieta = nombreDieta;
+        this.lunes = lunes;
+        this.martes = martes;
+        this.miercoles = miercoles;
+        this.jueves = jueves;
+        this.viernes = viernes;
+        this.fInicio = fInicio;
+        this.fFin = fFin;
+        this.nombrePaciente = nombrePaciente;
         this.totalCalorias = totalCalorias;
-        this.paciente = paciente;
-        this.idPaciente = idPaciente;
+        this.estado = estado;
     }
 
     public int getCodDieta() {
@@ -72,60 +62,76 @@ public Dieta(String nombreD, Date fechaIni, Date fechaFin, float pesoInicial, fl
         this.codDieta = codDieta;
     }
 
-    public String getNombreD() {
-        return nombreD;
+    public String getNombreDieta() {
+        return nombreDieta;
     }
 
-    public void setNombreD(String nombreD) {
-        this.nombreD = nombreD;
+    public void setNombreDieta(String nombreDieta) {
+        this.nombreDieta = nombreDieta;
     }
 
-    public List<MenuDiario> getListMenuDiario() {
-        return listMenuDiario;
+    public String getLunes() {
+        return lunes;
     }
 
-    public void setListMenuDiario(List<MenuDiario> listMenuDiario) {
-        this.listMenuDiario = listMenuDiario;
+    public void setLunes(String lunes) {
+        this.lunes = lunes;
     }
 
-    public Date getFechaIni() {
-        return fechaIni;
+    public String getMartes() {
+        return martes;
     }
 
-    public void setFechaIni(Date fechaIni) {
-        this.fechaIni = fechaIni;
+    public void setMartes(String martes) {
+        this.martes = martes;
     }
 
-    public Date getFechaFin() {
-        return fechaFin;
+    public String getMiercoles() {
+        return miercoles;
     }
 
-    public void setFechaFin(Date fechaFin) {
-        this.fechaFin = fechaFin;
+    public void setMiercoles(String miercoles) {
+        this.miercoles = miercoles;
     }
 
-    public float getPesoInicial() {
-        return pesoInicial;
+    public String getJueves() {
+        return jueves;
     }
 
-    public void setPesoInicial(float pesoInicial) {
-        this.pesoInicial = pesoInicial;
+    public void setJueves(String jueves) {
+        this.jueves = jueves;
     }
 
-    public float getPesoFinal() {
-        return pesoFinal;
+    public String getViernes() {
+        return viernes;
     }
 
-    public void setPesoFinal(float pesoFinal) {
-        this.pesoFinal = pesoFinal;
+    public void setViernes(String viernes) {
+        this.viernes = viernes;
     }
 
-    public boolean isEstado() {
-        return estado;
+    public Date getfInicio() {
+        return fInicio;
     }
 
-    public void setEstado(boolean estado) {
-        this.estado = estado;
+    public void setfInicio(Date fInicio) {
+        this.fInicio = fInicio;
+    }
+
+    public Date getfFin() {
+        return fFin;
+    }
+
+    public void setfFin(Date fFin) {
+        this.fFin = fFin;
+    }
+
+    public String getNombrePaciente() {
+        return nombrePaciente;
+    }
+
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
     }
 
     public int getTotalCalorias() {
@@ -136,35 +142,18 @@ public Dieta(String nombreD, Date fechaIni, Date fechaFin, float pesoInicial, fl
         this.totalCalorias = totalCalorias;
     }
 
-    public Paciente getPaciente() {
-        return paciente;
+    public boolean isEstado() {
+        return estado;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
-    }
-
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
-
-    public void cargarPesoInicial(float pesoInicial) {
-        this.pesoInicial = pesoInicial;
-    }
-
-
-    // Método para calcular la diferencia de peso
-    public float calcularDiferenciaPeso() {
-        return this.pesoInicial - this.pesoFinal;
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "Dieta{" + "codDieta=" + codDieta + ", NombreDieta=" + nombreD + ", Menus=" +  new ArrayList<>() + ", Fechainicio=" + fechaIni + ", Fechafin=" + pesoFinal + ", Estado=" + estado + ", Total de calorias=" + totalCalorias + ", paciente=" + paciente + '}';
+        return "Dieta{" + "codDieta=" + codDieta + ", nombreDieta=" + nombreDieta + ", lunes=" + lunes + ", martes=" + martes + ", miercoles=" + miercoles + ", jueves=" + jueves + ", viernes=" + viernes + ", fInicio=" + fInicio + ", fFin=" + fFin + ", nombrePaciente=" + nombrePaciente + ", totalCalorias=" + totalCalorias + ", estado=" + estado + '}';
     }
+
+
 }

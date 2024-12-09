@@ -64,24 +64,70 @@ public class AlimentoData {
         }
     }
          
-         public Alimentos buscarAlimento(String nombreComida) {
-        String sql = "SELECT * FROM alimentos WHERE nombreComida = ?";
-        Alimentos alimento = null;
+        public List<Alimentos> buscarAlimentoPorNombre(String nombreComida) {
+        String sql = "SELECT * FROM alimentos WHERE nombreComida LIKE ?";
+        List<Alimentos> alimentos = new ArrayList<>();
         try {
             PreparedStatement statement = con.prepareStatement(sql);
-            statement.setString(1, nombreComida);
+            statement.setString(1, "%" + nombreComida + "%");
             ResultSet resultSet = statement.executeQuery();
-            if (resultSet.next()) {
-                alimento = new Alimentos();
+            while (resultSet.next()) {
+                Alimentos alimento = new Alimentos();
                 alimento.setCodComida(resultSet.getInt("codComida"));
                 alimento.setNombreComida(resultSet.getString("nombreComida"));
                 alimento.setCaloriasPorPorcion(resultSet.getInt("caloriasPorPorcion"));
                 alimento.setStipoComida(resultSet.getString("tipoComida"));
                 alimento.setDetalle(resultSet.getString("detalle"));
+                alimentos.add(alimento);
             }
         } catch (SQLException ex) {
+            
         }
-        return alimento;
+        return alimentos;
+    }
+        
+        public List<Alimentos> buscarAlimentoPorDetalle(String detalle) {
+        String sql = "SELECT * FROM alimentos WHERE detalle LIKE ?";
+        List<Alimentos> alimentos = new ArrayList<>();
+        try {
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1, "%" + detalle + "%");
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Alimentos alimento = new Alimentos();
+                alimento.setCodComida(resultSet.getInt("codComida"));
+                alimento.setNombreComida(resultSet.getString("nombreComida"));
+                alimento.setCaloriasPorPorcion(resultSet.getInt("caloriasPorPorcion"));
+                alimento.setStipoComida(resultSet.getString("tipoComida"));
+                alimento.setDetalle(resultSet.getString("detalle"));
+                alimentos.add(alimento);
+            }
+        } catch (SQLException ex) {
+            
+        }
+        return alimentos;
+    }
+        
+        public List<Alimentos> buscarAlimentoPorTipo(String tipoComida) {
+        String sql = "SELECT * FROM alimentos WHERE tipoComida = ?";
+        List<Alimentos> alimentos = new ArrayList<>();
+        try {
+            PreparedStatement statement = con.prepareStatement(sql);
+            statement.setString(1,tipoComida);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Alimentos alimento = new Alimentos();
+                alimento.setCodComida(resultSet.getInt("codComida"));
+                alimento.setNombreComida(resultSet.getString("nombreComida"));
+                alimento.setCaloriasPorPorcion(resultSet.getInt("caloriasPorPorcion"));
+                alimento.setStipoComida(resultSet.getString("tipoComida"));
+                alimento.setDetalle(resultSet.getString("detalle"));
+                alimentos.add(alimento);
+            }
+        } catch (SQLException ex) {
+            
+        }
+        return alimentos;
     }
          
          public List<Alimentos> listarAlimentos() {

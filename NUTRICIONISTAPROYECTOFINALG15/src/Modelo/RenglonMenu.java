@@ -2,37 +2,39 @@ package Modelo;
 
 public class RenglonMenu {
     private int nroRenglon;
-    private int codMenu;
+    private String nombreRenglon;
     private int subtotalCalorias;
-    private int codComida; 
-    private double cantidadGramos;
+    private int cantidadGramos;
+    private String nomComida1; 
+    private String nomComida2; 
+    private String nomComida3; 
+    private String tipo;
 
     public RenglonMenu() {
     }
 
-    public RenglonMenu(int nroRenglon, int codComida, double cantidadGramos, int subtotalCalorias) {
+    public RenglonMenu(int nroRenglon, String nombreRenglon, int subtotalCalorias, int cantidadGramos, String nomComida1, String nomComida2, String nomComida3, String tipo) {
         this.nroRenglon = nroRenglon;
-        this.codComida = codComida;
-        this.cantidadGramos = cantidadGramos;
+        this.nombreRenglon = nombreRenglon;
         this.subtotalCalorias = subtotalCalorias;
+        this.cantidadGramos = cantidadGramos;
+        this.nomComida1 = nomComida1;
+        this.nomComida2 = nomComida2;
+        this.nomComida3 = nomComida3;
+        this.tipo = tipo;
     }
 
-    public RenglonMenu(int nroRenglon, int codMenu, int codComida, double cantidadGramos, int caloriasPorPorcion) {
-        this.nroRenglon = nroRenglon;
-        this.codMenu = codMenu;
-        this.codComida = codComida;
-        this.cantidadGramos = cantidadGramos;
-        this.subtotalCalorias = calcularSubtotalCalorias(caloriasPorPorcion);
-    }
-    
-        public RenglonMenu(int codMenu, int subtotalCalorias, int codComida, double cantidadGramos) {
-        this.codMenu = codMenu;
+    public RenglonMenu(String nombreRenglon, int subtotalCalorias, int cantidadGramos, String nomComida1, String nomComida2, String nomComida3, String tipo) {
+        this.nombreRenglon = nombreRenglon;
         this.subtotalCalorias = subtotalCalorias;
-        this.codComida = codComida;
         this.cantidadGramos = cantidadGramos;
+        this.nomComida1 = nomComida1;
+        this.nomComida2 = nomComida2;
+        this.nomComida3 = nomComida3;
+        this.tipo = tipo;
     }
 
- public int getNroRenglon() {
+    public int getNroRenglon() {
         return nroRenglon;
     }
 
@@ -40,12 +42,12 @@ public class RenglonMenu {
         this.nroRenglon = nroRenglon;
     }
 
-    public int getCodMenu() {
-        return codMenu;
+    public String getNombreRenglon() {
+        return nombreRenglon;
     }
 
-    public void setCodMenu(int codMenu) {
-        this.codMenu = codMenu;
+    public void setNombreRenglon(String nombreRenglon) {
+        this.nombreRenglon = nombreRenglon;
     }
 
     public int getSubtotalCalorias() {
@@ -56,38 +58,52 @@ public class RenglonMenu {
         this.subtotalCalorias = subtotalCalorias;
     }
 
-    public int getCodComida() {
-        return codComida;
-    }
-
-    public void setCodComida(int codComida) {
-        this.codComida = codComida;
-    }
-
-    public double getCantidadGramos() {
+    public int getCantidadGramos() {
         return cantidadGramos;
     }
 
-    public void setCantidadGramos(double cantidadGramos) {
-        if (cantidadGramos > 0) {
-            this.cantidadGramos = cantidadGramos;
-        } else {
-            throw new IllegalArgumentException("La cantidad de gramos debe ser positiva.");
-        }
+    public void setCantidadGramos(int cantidadGramos) {
+        this.cantidadGramos = cantidadGramos;
+    }
+
+    public String getNomComida1() {
+        return nomComida1;
+    }
+
+    public void setNomComida1(String nomComida1) {
+        this.nomComida1 = nomComida1;
+    }
+
+    public String getNomComida2() {
+        return nomComida2;
+    }
+
+    public void setNomComida2(String nomComida2) {
+        this.nomComida2 = nomComida2;
+    }
+
+    public String getNomComida3() {
+        return nomComida3;
+    }
+
+    public void setNomComida3(String nomComida3) {
+        this.nomComida3 = nomComida3;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override
     public String toString() {
-        return "RenglonMenu{" +
-               "nroRenglon=" + nroRenglon +
-               ", codMenu=" + codMenu +
-               ", subtotalCalorias=" + subtotalCalorias +
-               ", codComida=" + codComida +
-               ", cantidadGramos=" + cantidadGramos +
-               '}';
+        return nombreRenglon;
     }
 
-    public int calcularSubtotalCalorias(int caloriasPorPorcion) {
-        return (int) (this.cantidadGramos * caloriasPorPorcion / 100);
-    }
+    
+
+
 }

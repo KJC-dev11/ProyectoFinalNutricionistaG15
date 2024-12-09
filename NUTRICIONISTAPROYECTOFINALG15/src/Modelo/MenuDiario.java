@@ -12,29 +12,32 @@ import java.util.List;
  */
 public class MenuDiario {
     private int codMenu;
-    private String dia;
-    private int caloriasDelMenu;
-    private String estado;
-    private int codDieta;
+    private String nombreMenu;
+    private String desayuno;
+    private String almuerzo;
+    private String merienda;
+    private String cena;
     
     private List<RenglonMenu> renglones;
 
     public MenuDiario() {
     }
 
-    public MenuDiario(String dia, int caloriasDelMenu, String estado, int codDieta) {
-        this.dia = dia;
-        this.caloriasDelMenu = caloriasDelMenu;
-        this.estado = estado;
-        this.codDieta = codDieta;
+    public MenuDiario(int codMenu, String nombreMenu, String desayuno, String almuerzo, String merienda, String cena) {
+        this.codMenu = codMenu;
+        this.nombreMenu = nombreMenu;
+        this.desayuno = desayuno;
+        this.almuerzo = almuerzo;
+        this.merienda = merienda;
+        this.cena = cena;
     }
 
-    public MenuDiario(int codMenu, String dia, int caloriasDelMenu, String estado, int codDieta) {
-        this.codMenu = codMenu;
-        this.dia = dia;
-        this.caloriasDelMenu = caloriasDelMenu;
-        this.estado = estado;
-        this.codDieta = codDieta;
+    public MenuDiario(String nombreMenu, String desayuno, String almuerzo, String merienda, String cena) {
+        this.nombreMenu = nombreMenu;
+        this.desayuno = desayuno;
+        this.almuerzo = almuerzo;
+        this.merienda = merienda;
+        this.cena = cena;
     }
 
     public int getCodMenu() {
@@ -45,43 +48,53 @@ public class MenuDiario {
         this.codMenu = codMenu;
     }
 
-    public String getDia() {
-        return dia;
+    public String getNombreMenu() {
+        return nombreMenu;
     }
 
-    public void setDia(String dia) {
-        this.dia = dia;
+    public void setNombreMenu(String nombreMenu) {
+        this.nombreMenu = nombreMenu;
     }
 
-    public int getCaloriasDelMenu() {
-        return caloriasDelMenu;
+    public String getDesayuno() {
+        return desayuno;
     }
 
-    public void setCaloriasDelMenu(int caloriasDelMenu) {
-        this.caloriasDelMenu = caloriasDelMenu;
+    public void setDesayuno(String desayuno) {
+        this.desayuno = desayuno;
     }
 
-    public String getEstado() {
-        return estado;
+    public String getAlmuerzo() {
+        return almuerzo;
     }
 
-    public void setEstado(String estado) {
-        this.estado = estado;
+    public void setAlmuerzo(String almuerzo) {
+        this.almuerzo = almuerzo;
     }
 
-    public int getCodDieta() {
-        return codDieta;
+    public String getMerienda() {
+        return merienda;
     }
 
-    public void setCodDieta(int codDieta) {
-        this.codDieta = codDieta;
+    public void setMerienda(String merienda) {
+        this.merienda = merienda;
+    }
+
+    public String getCena() {
+        return cena;
+    }
+
+    public void setCena(String cena) {
+        this.cena = cena;
     }
 
     @Override
     public String toString() {
-        return "MenuDiario{" + "codMenu=" + codMenu + ", dia=" + dia + ", caloriasDelMenu=" + caloriasDelMenu + ", estado=" + estado + ", codDieta=" + codDieta + '}';
+        return "MenuDiario{" + "codMenu=" + codMenu + ", nombreMenu=" + nombreMenu + ", desayuno=" + desayuno + ", almuerzo=" + almuerzo + ", merienda=" + merienda + ", cena=" + cena + '}';
     }
-    
-    
+
+
+
+       
     
 }
