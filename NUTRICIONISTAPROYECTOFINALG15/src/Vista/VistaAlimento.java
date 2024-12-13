@@ -408,7 +408,7 @@ public class VistaAlimento extends javax.swing.JPanel {
     private javax.swing.JTextField jtfNombre;
     // End of variables declaration//GEN-END:variables
 
-    private void buscarNombre(){
+private void buscarNombre(){
         try {
             String nombreComida = jtfNombre.getText();
             List<Alimentos> alimento = alimentoData.buscarAlimentoPorNombre(nombreComida);
@@ -439,8 +439,8 @@ public class VistaAlimento extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Código no válido.");
         }
   }
-    
-        private void buscarDetalle(){
+
+private void buscarDetalle(){
         try {
             String detalleComida = jtfDetalle.getText();
             List<Alimentos> alimento = alimentoData.buscarAlimentoPorDetalle(detalleComida);
@@ -471,7 +471,7 @@ public class VistaAlimento extends javax.swing.JPanel {
         }
     }
         
-            private void buscarTipo(){
+private void buscarTipo(){
         try {
             String tipoComida = jcbTipo.getSelectedItem().toString();
             List<Alimentos> alimento = alimentoData.buscarAlimentoPorTipo(tipoComida);
@@ -503,7 +503,7 @@ public class VistaAlimento extends javax.swing.JPanel {
         }
     }
 
-    public void limpiar(){
+public void limpiar(){
     
         jtfCodComida.setText("");
         jtfNombre.setText("");
@@ -511,9 +511,8 @@ public class VistaAlimento extends javax.swing.JPanel {
         jtfCalorias.setText("");
         jcbTipo.setSelectedIndex(0);
     }
-    
-    
-    private void guardar(){
+   
+private void guardar(){
         try {
             int codComida = Integer.parseInt(jtfCodComida.getText());
             String nombre = jtfNombre.getText();
@@ -531,7 +530,7 @@ public class VistaAlimento extends javax.swing.JPanel {
         }    
     }
     
-    private void modificar(){
+private void modificar(){
         
         try {
             int codComida = Integer.parseInt(jtfCodComida.getText());
@@ -549,8 +548,8 @@ public class VistaAlimento extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Código no válido.");
         }
     }  
-    
-    private void eliminar(){
+
+private void eliminar(){
         try {
              int codComida = Integer.parseInt(jtfCodComida.getText());
             alimentoData.eliminarAlimento(codComida);
@@ -562,7 +561,7 @@ public class VistaAlimento extends javax.swing.JPanel {
         }
     }
     
-    private void actualizarTabla() {
+private void actualizarTabla() {
         
         DefaultTableModel model = (DefaultTableModel) jtAlimento.getModel();
         model.setRowCount(0);
