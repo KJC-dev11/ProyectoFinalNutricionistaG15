@@ -90,7 +90,7 @@ public class DietaData {
     }
      
     public List<Dieta> buscarRenglonPorNombre(String nombreDieta) {
-        String sql = "SELECT * FROM renglonmenu WHERE nombreRenglon LIKE ?";
+        String sql = "SELECT * FROM dietas WHERE nombreDieta LIKE ?";
         List<Dieta> dietas = new ArrayList<>();
         try {
             PreparedStatement statement = con.prepareStatement(sql);
@@ -183,6 +183,22 @@ public class DietaData {
             System.err.println("Error al obtener nombres pacientes: " + e.getMessage());
         }
         return pacientes;
+    }
+    
+    public List<String> obtenerMenus() {
+        List<String> menus = new ArrayList<>();
+        String sql = "SELECT nombreMenu FROM menudiario";
+
+        try (PreparedStatement stmt = con.prepareStatement(sql);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                menus.add(rs.getString("nombreMenu"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error al obtener menus: " + e.getMessage());
+        }
+        return menus;
     }
 
 }
