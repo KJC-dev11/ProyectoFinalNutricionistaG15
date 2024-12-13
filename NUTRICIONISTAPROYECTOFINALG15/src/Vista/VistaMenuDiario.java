@@ -96,7 +96,7 @@ public class VistaMenuDiario extends javax.swing.JPanel {
         });
 
         jtMenuDiario.setBackground(new java.awt.Color(255, 255, 255));
-        jtMenuDiario.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtMenuDiario.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
         jtMenuDiario.setForeground(new java.awt.Color(0, 0, 0));
         jtMenuDiario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -404,7 +404,6 @@ public class VistaMenuDiario extends javax.swing.JPanel {
     private javax.swing.JButton jbBuscar;
     private javax.swing.JButton jbGuardar;
     private javax.swing.JButton jbModificar;
-    private javax.swing.JButton jbNuevo2;
     private javax.swing.JButton jbNuevo3;
     private javax.swing.JComboBox<String> jcbAlmuerzo;
     private javax.swing.JComboBox<String> jcbCena;
