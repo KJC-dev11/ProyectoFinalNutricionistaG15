@@ -114,7 +114,7 @@ public class VistaRenglon extends javax.swing.JPanel {
         jtfTotalCal.setForeground(new java.awt.Color(0, 0, 0));
 
         jtRenglon.setBackground(new java.awt.Color(255, 255, 255));
-        jtRenglon.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
+        jtRenglon.setFont(new java.awt.Font("Century Gothic", 1, 10)); // NOI18N
         jtRenglon.setForeground(new java.awt.Color(0, 0, 0));
         jtRenglon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
