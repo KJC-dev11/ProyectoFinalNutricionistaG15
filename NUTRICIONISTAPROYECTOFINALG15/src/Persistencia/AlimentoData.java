@@ -25,7 +25,7 @@ public class AlimentoData {
         con = Conexion.getConexion();
     }
     
-        public void guardarAlimento(Alimentos alimento) {
+public void guardarAlimento(Alimentos alimento) {
     String sql = "INSERT INTO alimentos (codComida, nombreComida, caloriasPorPorcion, tipoComida, detalle) VALUES (?, ?, ?, ?, ?)";
     try (PreparedStatement statement = con.prepareStatement(sql)) {
         statement.setInt(1, alimento.getCodComida());
@@ -39,32 +39,32 @@ public class AlimentoData {
     }
     }
         
-        public void actualizarAlimento(Alimentos alimento) {
-    String sql = "UPDATE alimentos SET nombreComida = ?, caloriasPorPorcion = ?, tipoComida = ?, detalle = ? WHERE codComida = ?";
-    try (PreparedStatement statement = con.prepareStatement(sql)) {
-        statement.setString(1, alimento.getNombreComida());
-        statement.setInt(2, alimento.getCaloriasPorPorcion());
-        statement.setString(3, alimento.getStipoComida());
-        statement.setString(4, alimento.getDetalle());
-        statement.setInt(5, alimento.getCodComida());
-        statement.executeUpdate();
-        System.out.println("Alimento actualizado con éxito.");
-    } catch (SQLException ex) {
-    }
+public void actualizarAlimento(Alimentos alimento) {
+        String sql = "UPDATE alimentos SET nombreComida = ?, caloriasPorPorcion = ?, tipoComida = ?, detalle = ? WHERE codComida = ?";
+            try (PreparedStatement statement = con.prepareStatement(sql)) {
+                statement.setString(1, alimento.getNombreComida());
+                statement.setInt(2, alimento.getCaloriasPorPorcion());
+                statement.setString(3, alimento.getStipoComida());
+                statement.setString(4, alimento.getDetalle());
+                statement.setInt(5, alimento.getCodComida());
+                statement.executeUpdate();
+                System.out.println("Alimento actualizado con éxito.");
+            } catch (SQLException ex) {
+        }
     }
         
-         public void eliminarAlimento(int codComida) {
+public void eliminarAlimento(int codComida) {
         String sql = "DELETE FROM alimentos WHERE codComida = ?";
-        try {
-            PreparedStatement statement = con.prepareStatement(sql);
-            statement.setInt(1, codComida);
-            statement.executeUpdate();
-            System.out.println("Alimento eliminado con éxito.");
-        } catch (SQLException ex) {
+            try {
+                PreparedStatement statement = con.prepareStatement(sql);
+                statement.setInt(1, codComida);
+                statement.executeUpdate();
+                System.out.println("Alimento eliminado con éxito.");
+            } catch (SQLException ex) {
         }
     }
          
-        public List<Alimentos> buscarAlimentoPorNombre(String nombreComida) {
+public List<Alimentos> buscarAlimentoPorNombre(String nombreComida) {
         String sql = "SELECT * FROM alimentos WHERE nombreComida LIKE ?";
         List<Alimentos> alimentos = new ArrayList<>();
         try {
@@ -86,7 +86,7 @@ public class AlimentoData {
         return alimentos;
     }
         
-        public List<Alimentos> buscarAlimentoPorDetalle(String detalle) {
+public List<Alimentos> buscarAlimentoPorDetalle(String detalle) {
         String sql = "SELECT * FROM alimentos WHERE detalle LIKE ?";
         List<Alimentos> alimentos = new ArrayList<>();
         try {
@@ -108,7 +108,7 @@ public class AlimentoData {
         return alimentos;
     }
         
-        public List<Alimentos> buscarAlimentoPorTipo(String tipoComida) {
+public List<Alimentos> buscarAlimentoPorTipo(String tipoComida) {
         String sql = "SELECT * FROM alimentos WHERE tipoComida = ?";
         List<Alimentos> alimentos = new ArrayList<>();
         try {
@@ -130,7 +130,7 @@ public class AlimentoData {
         return alimentos;
     }
          
-         public List<Alimentos> listarAlimentos() {
+public List<Alimentos> listarAlimentos() {
     List<Alimentos> alimentos = new ArrayList<>();
     String sql = "SELECT * FROM alimentos";
     try (PreparedStatement statement = con.prepareStatement(sql);
